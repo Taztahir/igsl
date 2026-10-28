@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -171,7 +171,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <a href="#saip-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
         Skip to main content
@@ -230,7 +230,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -302,7 +302,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Building the infrastructure of location.
                 </h1>
             </div>
@@ -327,6 +327,38 @@
 
             </div>
 
+            <!-- SAIP Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="./assets/saip-addressing.jpg" 
+                    alt="Aerial geospatial grid and spatial street addressing network" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        PUBLIC DIGITAL INFRASTRUCTURE · SPATIAL SYSTEMS
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            STATE-LEVEL ADDRESSING &amp; REGISTRATION
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            Persistent location infrastructure unlocking revenue, property identification, and public safety.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        SOUTHERN NIGERIA · LIVE
+                    </div>
+                </div>
+            </div>
+
         </section>
 
 
@@ -341,7 +373,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         More than addresses.<br>A complete system.
                     </h2>
                 </div>
@@ -405,7 +437,7 @@
             </div>
 
             <div class="reveal pb-12 sm:pb-16 max-w-3xl">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     Infrastructure capable of supporting modern state governance.
                 </h2>
             </div>
@@ -476,7 +508,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         One framework.<br>Different local realities.
                     </h2>
                 </div>

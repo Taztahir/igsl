@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -172,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <!-- Accessibility Skip Link -->
     <a href="#what-we-do-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
@@ -250,7 +250,7 @@
 
             <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -322,7 +322,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Integrated capability. Practical delivery.
                 </h1>
             </div>
@@ -345,6 +345,38 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- What We Do Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="./assets/what-we-do-hero.jpg" 
+                    alt="High-availability digital network and enterprise architecture" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        CORE CAPABILITIES · END-TO-END EXECUTION
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            TECHNICAL &amp; OPERATIONAL EXCELLENCE
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            From software architecture and geospatial infrastructure to institutional programme delivery.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        AUDITABLE DELIVERY
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -374,6 +406,23 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Our focus extends beyond software development to the complete operating environment required to make platforms secure, usable, and sustainable in demanding institutional contexts.
                     </p>
+
+                    <!-- Discipline 1 Visual Card with Hover Zoom -->
+                    <div class="pt-2">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-48 sm:h-56">
+                            <img 
+                                src="./assets/digital-systems.jpg" 
+                                alt="Platform architecture and high-availability digital networks" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">ENTERPRISE PLATFORMS</span>
+                                <span class="text-orange-300">CONFIGURABLE STACK</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:col-span-7">
@@ -440,6 +489,23 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Connecting people, property, physical infrastructure and public services to geographic place. Demonstrated at state scale through our flagship State Addressing and Identity Programme (SAIP).
                     </p>
+
+                    <!-- Discipline 2 Visual Card with Hover Zoom -->
+                    <div class="pt-2">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-48 sm:h-56">
+                            <img 
+                                src="./assets/geospatial.jpg" 
+                                alt="Geospatial street network and spatial address grid" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">GEOSPATIAL REGISTRY</span>
+                                <span class="text-orange-300">SAIP FRAMEWORK</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:col-span-7">
@@ -506,6 +572,23 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Engineered specifically for institutions that require resilient, high-volume, secure and usable information systems with zero tolerance for data loss.
                     </p>
+
+                    <!-- Discipline 3 Visual Card with Hover Zoom -->
+                    <div class="pt-2">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-48 sm:h-56">
+                            <img 
+                                src="./assets/data-analytics.jpg" 
+                                alt="Real-time analytics pipelines and executive data architecture" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">SECURE DATA PIPELINES</span>
+                                <span class="text-orange-300">AUDITABLE TELEMETRY</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:col-span-7">
@@ -572,6 +655,23 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Ensuring multi-stakeholder coordination, rigorous governance, milestone delivery, and sustainable operational readiness for national and sub-national transformations.
                     </p>
+
+                    <!-- Discipline 4 Visual Card with Hover Zoom -->
+                    <div class="pt-2">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-48 sm:h-56">
+                            <img 
+                                src="./assets/infrastructure.jpg" 
+                                alt="Institutional PMO governance and programme architecture" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">PMO GOVERNANCE</span>
+                                <span class="text-orange-300">MILESTONE ASSURANCE</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:col-span-7">
@@ -638,6 +738,23 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Where we contribute intellectual property, programme architecture, bespoke technology, or strategic management to create long-term sovereign value.
                     </p>
+
+                    <!-- Discipline 5 Visual Card with Hover Zoom -->
+                    <div class="pt-2">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-48 sm:h-56">
+                            <img 
+                                src="./assets/consulting.jpg" 
+                                alt="African market commercial origination and venture expansion" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">AFRICAN MARKET SCALE</span>
+                                <span class="text-orange-300">PPP &amp; VENTURES</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:col-span-7">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -171,7 +171,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <a href="#ventures-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
         Skip to main content
@@ -230,7 +230,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -302,7 +302,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Building beyond consulting.
                 </h1>
             </div>
@@ -357,17 +357,43 @@
                 </div>
 
                 <div class="lg:col-span-6">
-                    <div class="p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder space-y-4">
-                        <div class="flex items-center justify-between pb-4 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">DEPLOYED INITIATIVE</span>
-                            <span class="text-xs text-themeMuted font-mono">GHANA CONSUMER MARKET</span>
+                    <div class="group overflow-hidden rounded-xl border border-themeBorder bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:border-themeBrand/50">
+                        <!-- Image Container with Hover Zoom -->
+                        <div class="relative h-56 sm:h-64 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/padvs-ghana.jpg" 
+                                alt="West African urban commercial landscape" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 inset-x-4 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase border border-white/20">
+                                    DEPLOYED INITIATIVE
+                                </span>
+                                <span class="text-xs font-mono text-neutral-300">GHANA MARKET</span>
+                            </div>
+
+                            <div class="absolute bottom-4 inset-x-4 text-white">
+                                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1">
+                                    Nya Mfasoɔ
+                                </h3>
+                                <p class="text-xs font-mono uppercase tracking-wider text-orange-300">
+                                    Structured Civic Participation Framework
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText">
-                            Nya Mfasoɔ
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            The flagship consumer-facing digital participation initiative operated through IGS Matrix Ghana Ltd, leveraging the PADVS engine to bridge structured engagement with transparent rewards and auditable settlement.
-                        </p>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                The flagship consumer-facing digital participation initiative operated through IGS Matrix Ghana Ltd, leveraging the PADVS engine to bridge structured engagement with transparent rewards and auditable settlement.
+                            </p>
+                            <div class="pt-4 hairline-t flex items-center justify-between text-xs font-mono text-themeMuted">
+                                <span>Platform: PADVS Engine</span>
+                                <span class="text-themeBrand font-bold">Active Rollout</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -386,7 +412,7 @@
             </div>
 
             <div class="reveal pb-12 sm:pb-16 max-w-3xl">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     Ventures and affiliates across key growth sectors.
                 </h2>
                 <p class="text-base sm:text-lg text-themeMuted leading-relaxed mt-4">
@@ -394,55 +420,104 @@
                 </p>
             </div>
 
-            <!-- Venture Cards Grid -->
+            <!-- Venture Cards Grid with Rich Images & Hover Effects -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
 
                 <!-- Moyours Sports Academy -->
-                <article class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder space-y-6 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-4 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">SPORTS DEVELOPMENT</span>
-                            <span class="text-xs text-themeMuted font-mono">YOUTH TALENT</span>
+                        <!-- Image Container with Hover Scale -->
+                        <div class="relative h-60 sm:h-72 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/moyours-academy-logo.png" 
+                                alt="Athletes and youth training at football academy" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 inset-x-4 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase border border-white/20">
+                                    SPORTS DEVELOPMENT
+                                </span>
+                                <span class="text-xs font-mono text-neutral-300">YOUTH TALENT</span>
+                            </div>
+
+                            <div class="absolute bottom-4 inset-x-4 text-white">
+                                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1">
+                                    Moyours Sports Academy Ltd
+                                </h3>
+                                <p class="text-xs font-mono uppercase tracking-wider text-orange-300">
+                                    Youth Football &amp; Athlete Development
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-themeText mt-3 mb-3">
-                            Moyours Sports Academy Ltd
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Moyours Football Club Academy focuses on youth football development, providing structured professional training, academic mentorship, and international pathways to help young players develop athletic skills, discipline, and career opportunities.
-                        </p>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Moyours Football Club Academy focuses on youth football development, providing structured professional training, academic mentorship, and international pathways to help young players develop athletic skills, discipline, and career opportunities.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-4 hairline-t flex items-center justify-between">
-                        <span class="text-xs text-themeMuted font-mono">Football &amp; Mentorship</span>
-                        <a href="https://www.moyoursacademy.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand flex items-center gap-1 transition-colors">
-                            Visit Moyours Academy ↗
-                        </a>
+                    <div class="p-6 sm:p-8 pt-0">
+                        <div class="pt-4 hairline-t flex items-center justify-between">
+                            <span class="text-xs text-themeMuted font-mono">Football &amp; Mentorship</span>
+                            <a href="https://www.moyoursacademy.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand flex items-center gap-1.5 transition-colors">
+                                <span>Visit Moyours Academy</span>
+                                <span class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+                            </a>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Agricultural Services -->
-                <article class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder space-y-6 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-4 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">AGRIBUSINESS &amp; COMMODITIES</span>
-                            <span class="text-xs text-themeMuted font-mono">SUPPLY CHAIN</span>
+                        <!-- Image Container with Hover Scale -->
+                        <div class="relative h-60 sm:h-72 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=1000&q=80" 
+                                alt="Modern agriculture harvesting and commodity processing" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 inset-x-4 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase border border-white/20">
+                                    AGRIBUSINESS &amp; COMMODITIES
+                                </span>
+                                <span class="text-xs font-mono text-neutral-300">SUPPLY CHAIN</span>
+                            </div>
+
+                            <div class="absolute bottom-4 inset-x-4 text-white">
+                                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1">
+                                    Inspired Global Agricultural Services Ltd
+                                </h3>
+                                <p class="text-xs font-mono uppercase tracking-wider text-orange-300">
+                                    Input Supply &amp; Value Chain Exports
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-themeText mt-3 mb-3">
-                            Inspired Global Agricultural Services Ltd
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Structured commodity operations spanning input supply to enhance local farm productivity and premium organic exports connecting Nigerian agricultural communities directly to global commercial markets.
-                        </p>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Structured commodity operations spanning input supply to enhance local farm productivity and premium organic exports connecting Nigerian agricultural communities directly to global commercial markets.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-4 hairline-t grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium">
-                        <div class="p-3 bg-white rounded border border-themeBorder/60 space-y-1">
-                            <strong class="block text-themeText">Potash Fertilizer</strong>
-                            <p class="text-[11px] text-themeMuted">Importation of high-grade fertilizer enhancing soil fertility and crop yields across farming belts.</p>
-                        </div>
-                        <div class="p-3 bg-white rounded border border-themeBorder/60 space-y-1">
-                            <strong class="block text-themeText">Nigerian Shea Butter</strong>
-                            <p class="text-[11px] text-themeMuted">Exportation of raw organic shea butter, meeting international quality certifications for cosmetic industries.</p>
+                    <div class="p-6 sm:p-8 pt-0">
+                        <div class="pt-4 hairline-t grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium">
+                            <div class="p-3 bg-themeSurface rounded border border-themeBorder/60 space-y-1">
+                                <strong class="block text-themeText">Potash Fertilizer</strong>
+                                <p class="text-[11px] text-themeMuted">Importation of high-grade fertilizer enhancing soil fertility and crop yields across farming belts.</p>
+                            </div>
+                            <div class="p-3 bg-themeSurface rounded border border-themeBorder/60 space-y-1">
+                                <strong class="block text-themeText">Nigerian Shea Butter</strong>
+                                <p class="text-[11px] text-themeMuted">Exportation of raw organic shea butter, meeting international quality certifications for cosmetic industries.</p>
+                            </div>
                         </div>
                     </div>
                 </article>

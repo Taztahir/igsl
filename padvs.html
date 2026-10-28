@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -171,7 +171,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <a href="#padvs-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
         Skip to main content
@@ -230,7 +230,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -302,7 +302,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Technology for structured digital participation.
                 </h1>
             </div>
@@ -327,6 +327,38 @@
 
             </div>
 
+            <!-- PADVS Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="./assets/padvs-hero.jpg" 
+                    alt="Enterprise digital infrastructure, network servers, and transaction engine" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        PROPRIETARY ENGINE · TRANSACTION PLATFORM
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            STRUCTURED VALUE SYSTEMS
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            Engineered for high-volume citizen participation, transparent outcomes, and auditable reconciliation.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        CONFIGURABLE OS
+                    </div>
+                </div>
+            </div>
+
         </section>
 
 
@@ -340,7 +372,7 @@
             </div>
 
             <div class="reveal pb-12 sm:pb-16 max-w-3xl">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     Eight integrated capabilities in a unified operating environment.
                 </h2>
             </div>
@@ -411,7 +443,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Designed for controlled participation.
                     </h2>
                 </div>
@@ -452,20 +484,45 @@
                 </div>
 
                 <div class="lg:col-span-6">
-                    <div class="p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder space-y-4">
-                        <div class="flex items-center justify-between pb-4 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">GHANA DEPLOYMENT</span>
-                            <span class="text-xs text-themeMuted uppercase font-mono">LIVE INITIATIVE</span>
+                    <div class="group overflow-hidden rounded-xl border border-themeBorder bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:border-themeBrand/50">
+                        <div class="relative h-56 sm:h-64 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/padvs-ghana.jpg" 
+                                alt="West African consumer engagement and digital participation market" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 inset-x-4 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase border border-white/20">
+                                    GHANA DEPLOYMENT
+                                </span>
+                                <span class="text-xs font-mono text-neutral-300">LIVE INITIATIVE</span>
+                            </div>
+
+                            <div class="absolute bottom-4 inset-x-4 text-white">
+                                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1">
+                                    Nya Mfasoɔ
+                                </h3>
+                                <p class="text-xs font-mono uppercase tracking-wider text-orange-300">
+                                    First Consumer Participation Initiative
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText">
-                            Nya Mfasoɔ
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            PADVS is being introduced in Ghana through <strong>IGS Matrix Ghana Ltd</strong>, with <strong>Nya Mfasoɔ</strong> as the first consumer-facing digital participation initiative.
-                        </p>
-                        <p class="text-xs text-themeMuted leading-relaxed">
-                            Demonstrating the versatility of the PADVS engine to bridge consumer engagement with auditable financial reconciliation and civic value delivery.
-                        </p>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                PADVS is being introduced in Ghana through <strong>IGS Matrix Ghana Ltd</strong>, with <strong>Nya Mfasoɔ</strong> as the first consumer-facing digital participation initiative.
+                            </p>
+                            <p class="text-xs text-themeMuted leading-relaxed">
+                                Demonstrating the versatility of the PADVS engine to bridge consumer engagement with auditable financial reconciliation and civic value delivery.
+                            </p>
+                            <div class="pt-4 hairline-t flex items-center justify-between text-xs font-mono text-themeMuted">
+                                <span>Operating Unit: IGS Matrix Ghana</span>
+                                <span class="text-themeBrand font-bold">Live Execution</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -172,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <!-- Accessibility Skip Link -->
     <a href="#solutions-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
@@ -251,7 +251,7 @@
 
             <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -324,7 +324,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Technology and programme models built to scale.
                 </h1>
             </div>
@@ -349,6 +349,38 @@
 
             </div>
 
+            <!-- Solutions Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="./assets/solutions-hero.jpg" 
+                    alt="Statewide geospatial addressing and sovereign digital public infrastructure" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        FLAGSHIP PLATFORMS · PRODUCTION GRADE
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            SCALABLE ARCHITECTURE
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            Deploying digital public infrastructure and participation value systems at scale.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        AUDITABLE &amp; PERSISTENT
+                    </div>
+                </div>
+            </div>
+
         </section>
 
 
@@ -368,7 +400,7 @@
                     <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">
                         STATE ADDRESSING &amp; IDENTITY PROGRAMME
                     </span>
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.06]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.06]">
                         SAIP
                     </h2>
                     <p class="text-lg font-semibold text-themeText leading-snug">
@@ -380,10 +412,32 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         Currently deployed for a state government in Southern Nigeria, SAIP demonstrates how addressing evolves from mere street signage into persistent, foundational digital public infrastructure that unlocks property valuation, civic revenue, public safety, and financial inclusion.
                     </p>
-                    <div class="pt-2">
-                        <a href="mailto:info@inspiredglobalsystems.com?subject=SAIP%20Inquiry" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
-                            Request SAIP Briefing →
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <a href="saip.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
+                            Explore SAIP Deep-Dive →
                         </a>
+                    </div>
+
+                    <!-- SAIP Visual Showcase with Hover Zoom -->
+                    <div class="pt-4">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-52 sm:h-60">
+                            <img 
+                                src="./assets/saip-location.jpg" 
+                                alt="Urban street addressing and spatial grid network" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    SOUTHERN NIGERIA DEPLOYMENT
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">GEOSPATIAL PUBLIC INFRASTRUCTURE</span>
+                                <span class="text-orange-300">ACTIVE IN PRODUCTION</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -450,7 +504,7 @@
                     <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">
                         PARTICIPATION &amp; DIGITAL VALUE SYSTEM
                     </span>
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.06]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.06]">
                         PADVS
                     </h2>
                     <p class="text-lg font-semibold text-themeText leading-snug">
@@ -462,10 +516,32 @@
                     <p class="text-sm text-themeMuted leading-relaxed">
                         PADVS integrates participant registration, authenticated interactions, transaction processing, programme administration, financial settlement, reconciliation, and executive telemetry within a unified, configurable operating environment.
                     </p>
-                    <div class="pt-2">
-                        <a href="mailto:info@inspiredglobalsystems.com?subject=PADVS%20Inquiry" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
-                            Request PADVS Demo →
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <a href="padvs.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
+                            Explore PADVS Deep-Dive →
                         </a>
+                    </div>
+
+                    <!-- PADVS Visual Showcase with Hover Zoom -->
+                    <div class="pt-4">
+                        <div class="group overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 relative h-52 sm:h-60">
+                            <img 
+                                src="./assets/padvs-platform.jpg" 
+                                alt="High-availability digital network and enterprise participation platform" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    CONFIGURABLE ENTERPRISE OS
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
+                                <span class="font-bold tracking-wider">AUDITABLE VALUE EXCHANGE</span>
+                                <span class="text-orange-300">REAL-TIME SETTLEMENT</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

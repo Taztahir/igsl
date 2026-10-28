@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Inspired Global Systems Limited</title>
+    <meta name="description" content="Learn about Inspired Global Systems Limited, our approach to technology, infrastructure, data, operating model, and programme delivery.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/igsl-favicon.jpeg">
+    <link rel="apple-touch-icon" href="assets/igsl-favicon.jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        themeBg: 'var(--color-bg)',
+                        themeSurface: 'var(--color-surface)',
+                        themeCard: 'var(--color-card)',
+                        themeBorder: 'var(--color-border)',
+                        themeText: 'var(--color-text)',
+                        themeMuted: 'var(--color-muted)',
+                        themeBrand: 'var(--color-brand)',
+                        themeBrandHover: 'var(--color-brand-hover)',
+                        themeAccent: 'var(--color-accent)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS Variables & Motion Rules -->
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-surface: #f9f9fb;
+            --color-card: #f2f2f6;
+            --color-border: #e5e5ea;
+            --color-text: #09090b;
+            --color-muted: #5e5e68;
+            --color-brand: #ea580c; /* High-visibility orange matching user reference */
+            --color-brand-hover: #c2410c;
+            --color-accent: #10b981;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Prefer Reduced Motion Rule */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal,
+            .dropdown-menu-anim {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav Link Underline Motion */
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-brand);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--color-brand);
+        }
+
+        /* Dropdown Animation */
+        .dropdown-menu-anim {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dropdown-trigger-container:hover .dropdown-menu-anim,
+        .dropdown-trigger-container:focus-within .dropdown-menu-anim {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Live status dot pulse */
+        @keyframes status-pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .status-dot {
+            animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Giant footer typography */
+        .giant-brand-text {
+            font-size: clamp(4rem, 17vw, 16rem);
+            line-height: 0.82;
+            letter-spacing: -0.05em;
+        }
+
+        /* Hairline borders */
+        .hairline-b {
+            border-bottom: 1px solid var(--color-border);
+        }
+        .hairline-t {
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
+
+    <!-- Accessibility Skip Link -->
+    <a href="#about-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
+        Skip to main content
+    </a>
+
+    <!-- =========================================
+         HEADER & NAVBAR (Active on ABOUT with Orange Underline)
+    ========================================== -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/95 hairline-b transition-all duration-200">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Brand / Logo -->
+            <a href="index.html" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-black" aria-label="IGSL Home">
+                <img src="./assets/igsl-logo.png" alt="Inspired Global Systems Limited" class="md:w-40 w-36">
+            </a>
+
+            <!-- Desktop Navigation Links matching user screenshot -->
+            <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider uppercase text-themeText" aria-label="Main navigation">
+                
+                <a href="index.html" class="nav-link py-1 hover:text-themeBrand">
+                    HOME
+                </a>
+
+                <a href="aboutus.html" class="nav-link active py-1 hover:text-themeBrand" aria-current="page">
+                    ABOUT
+                </a>
+
+                <a href="what-we-do.html" class="nav-link py-1 hover:text-themeBrand">
+                    WHAT WE DO
+                </a>
+
+                <!-- SOLUTIONS & PLATFORMS with Dropdown (SAIP, PADVS) -->
+                <div class="relative dropdown-trigger-container group py-4">
+                    <a href="solutions.html" class="nav-link flex items-center gap-1.5 py-1 hover:text-themeBrand focus:outline-none uppercase font-bold text-xs">
+                        <span>SOLUTIONS &amp; PLATFORMS</span>
+                        <span class="text-xs transition-transform duration-200 group-hover:rotate-45" aria-hidden="true">+</span>
+                    </a>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu-anim absolute top-full left-0 w-72 bg-white rounded-lg shadow-xl border border-themeBorder p-3 z-50">
+                        <a href="saip.html" class="block p-3 rounded-md hover:bg-themeSurface transition-colors group/item">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-xs text-themeText group-hover/item:text-themeBrand tracking-wider">SAIP</span>
+                                <span class="text-xs text-themeMuted group-hover/item:translate-x-0.5 transition-transform">→</span>
+                            </div>
+                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
+                                State Addressing &amp; Identity Programme
+                            </p>
+                        </a>
+
+                        <div class="hairline-t my-1"></div>
+
+                        <a href="padvs.html" class="block p-3 rounded-md hover:bg-themeSurface transition-colors group/item">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-xs text-themeText group-hover/item:text-themeBrand tracking-wider">PADVS</span>
+                                <span class="text-xs text-themeMuted group-hover/item:translate-x-0.5 transition-transform">→</span>
+                            </div>
+                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
+                                Participation and Digital Value System
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="experience.html" class="nav-link py-1 hover:text-themeBrand">
+                    EXPERIENCE
+                </a>
+
+                <a href="ventures.html" class="nav-link py-1 hover:text-themeBrand">
+                    VENTURES
+                </a>
+
+                
+
+            </nav>
+
+            <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                    Get in touch
+                </a>
+
+                <button id="mobile-menu-toggle" type="button" class="lg:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 text-themeText focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="w-5 h-0.5 bg-current transition-transform duration-200"></span>
+                    <span class="w-5 h-0.5 bg-current transition-transform duration-200"></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="mobile-nav-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <!-- Mobile Navigation Drawer (Slides from Right) -->
+    <aside id="mobile-nav" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between p-6 sm:p-8 overflow-y-auto" aria-label="Mobile navigation drawer" aria-hidden="true">
+        <div>
+            <div class="flex items-center justify-between pb-6 hairline-b">
+                <span class="text-xs font-mono font-bold tracking-widest uppercase text-themeMuted">NAVIGATION</span>
+                <button id="mobile-menu-close" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-themeText hover:bg-themeSurface focus:outline-none" aria-label="Close menu">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="pt-6 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">HOME</a>
+                <a href="aboutus.html" class="mobile-nav-link text-themeBrand py-1.5 transition-colors">ABOUT</a>
+                <a href="what-we-do.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">WHAT WE DO</a>
+                
+                <div class="py-2 border-y border-themeBorder flex flex-col gap-2">
+                    <a href="solutions.html" class="text-themeBrand text-[11px] tracking-widest font-bold">SOLUTIONS &amp; PLATFORMS</a>
+                    <a href="saip.html" class="mobile-nav-link pl-3 text-themeText hover:text-themeBrand py-1 flex items-center justify-between">
+                        <span>SAIP (Addressing)</span>
+                        <span>→</span>
+                    </a>
+                    <a href="padvs.html" class="mobile-nav-link pl-3 text-themeText hover:text-themeBrand py-1 flex items-center justify-between">
+                        <span>PADVS (Digital Value)</span>
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <a href="experience.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">EXPERIENCE</a>
+                <a href="ventures.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">VENTURES</a>
+                
+            </nav>
+        </div>
+
+        <div class="pt-8 hairline-t">
+            <a href="contact.html" class="w-full inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
+                Get in touch →
+            </a>
+        </div>
+    </aside>
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             ABOUT HERO
+        ========================================== -->
+        <section id="about-hero" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-24 hairline-b">
+            
+            <div class="reveal flex items-center justify-between pb-6 sm:pb-8 text-xs font-semibold tracking-widest uppercase text-themeMuted hairline-b">
+                <span>ABOUT IGSL</span>
+                <!-- <span>INCORPORATED 2006 · NIGERIA</span> -->
+            </div>
+
+            <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
+                    Built around complex problems.
+                </h1>
+            </div>
+
+            <div class="reveal pt-8 hairline-t grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                
+                <div class="md:col-span-8 space-y-5">
+                    <p class="text-lg sm:text-xl md:text-2xl text-themeText font-medium leading-relaxed max-w-3xl">
+                        Inspired Global Systems Limited was incorporated in Nigeria in 2006 to provide technology and systems solutions to public and private institutions.
+                    </p>
+                    <p class="text-base sm:text-lg text-themeMuted font-normal leading-relaxed max-w-3xl">
+                        Two decades later, IGSL has evolved into an integrated technology, infrastructure, programme-delivery and strategic-solutions company. We bring together technology specialists, programme managers, advisers, institutional stakeholders and specialist delivery partners to take complex initiatives from concept through implementation and operation.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 flex md:justify-end items-start pt-1">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-medium text-themeText">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 status-dot" aria-hidden="true"></span>
+                        <span class="tracking-tight font-medium">Institutional &amp; Public Delivery</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- About Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" 
+                    alt="Institutional conference room and strategic systems architecture" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter grayscale contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        2006 — PRESENT · STRATEGIC DELIVERY
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            THE IGSL METHODOLOGY
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            Bringing multidisciplinary specialists and institutional leaders together to solve national-scale challenges.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        ABUJA · ACCRA · REGIONAL HUBS
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             OUR PHILOSOPHY
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>OUR PHILOSOPHY</span>
+            </div>
+
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                        Technology is only valuable when it works beyond the technology.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6 space-y-5">
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        Successful systems depend upon more than software. They require the deliberate alignment of people, process, technology, infrastructure, governance and economics.
+                    </p>
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        IGSL therefore approaches projects as complete operating environments rather than isolated technology deployments.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HOW WE WORK (PROCESS)
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>HOW WE WORK</span>
+            </div>
+
+            <div class="reveal pb-12 sm:pb-16 max-w-3xl">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    A structured lifecycle for complex deployments.
+                </h2>
+            </div>
+
+            <!-- 5 Process Stages (No 01/02 numbering) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
+
+                <article class="reveal hairline-t pt-6 flex flex-col justify-between group">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand mb-3 block">STAGE</span>
+                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-2">Understand</h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            Diagnose the institutional, operational and commercial problem at its root.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="reveal hairline-t pt-6 flex flex-col justify-between group">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand mb-3 block">STAGE</span>
+                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-2">Design</h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            Develop the programme, technology, governance and implementation architecture.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="reveal hairline-t pt-6 flex flex-col justify-between group">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand mb-3 block">STAGE</span>
+                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-2">Build</h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            Assemble scalable systems, technical infrastructure, partners and resources.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="reveal hairline-t pt-6 flex flex-col justify-between group">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand mb-3 block">STAGE</span>
+                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-2">Deploy</h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            Manage field implementation, testing, institutional adoption and operational readiness.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="reveal hairline-t pt-6 flex flex-col justify-between group">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand mb-3 block">STAGE</span>
+                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-2">Operate</h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            Measure performance, enforce SLAs, and continuously optimize system operations.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             OUR OPERATING MODEL
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>OUR OPERATING MODEL</span>
+            </div>
+
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                        One organisation.<br>Specialist project teams.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6">
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        Major IGSL programmes operate through dedicated multidisciplinary project structures supported by central corporate, technology and governance capabilities. This enables specialist execution without losing corporate oversight.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Two Structured Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder">
+                    <div class="flex items-center justify-between pb-6 hairline-b mb-6">
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">CORE FOUNDATION</span>
+                        <span class="text-xs text-themeMuted">CENTRAL CAPABILITY</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight text-themeText mb-4">
+                        Corporate Capabilities
+                    </h3>
+                    <ul class="space-y-3 text-sm font-medium text-themeText">
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-themeBrand"></span>
+                            <span>Technology &amp; Architecture</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-themeBrand"></span>
+                            <span>Programme Delivery &amp; PMO</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-themeBrand"></span>
+                            <span>Finance &amp; Commercial Frameworks</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-themeBrand"></span>
+                            <span>Governance &amp; Statutory Compliance</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-themeBrand"></span>
+                            <span>Corporate Services &amp; Institutional Relations</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder">
+                    <div class="flex items-center justify-between pb-6 hairline-b mb-6">
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">EXECUTION UNITS</span>
+                        <span class="text-xs text-themeMuted">SPECIALIST TEAMS</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight text-themeText mb-4">
+                        Programme Teams
+                    </h3>
+                    <ul class="space-y-3 text-sm font-medium text-themeText">
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+                            <span><strong>SAIP:</strong> State Addressing &amp; Identity Programme</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+                            <span><strong>PADVS / IGS Matrix:</strong> Digital Value &amp; Participation</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+                            <span><strong>Custom Deployments:</strong> Multi-stakeholder Enterprise Initiatives</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+                            <span><strong>Regional Teams:</strong> Dedicated State &amp; Institutional Desks</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             TECHNOLOGY & GOVERNANCE (BUILT FOR TRUST)
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>TECHNOLOGY &amp; GOVERNANCE</span>
+            </div>
+
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                        Built for trust.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6">
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        Technology handling institutional information, transactions and public-facing services must be secure, resilient and accountable. Our objective is to integrate governance into programme and technology architecture from the outset rather than treating compliance as an afterthought.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 10 Governance Pillars (No 01/02 numbering) -->
+            <div class="reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-6 hairline-t">
+                
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">SECURITY</span>
+                    <h3 class="font-bold text-sm text-themeText">Information Security</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">PRIVACY</span>
+                    <h3 class="font-bold text-sm text-themeText">Data Protection</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">ACCESS</span>
+                    <h3 class="font-bold text-sm text-themeText">Role-Based Access</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">PROVENANCE</span>
+                    <h3 class="font-bold text-sm text-themeText">Auditability</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">FINANCIAL</span>
+                    <h3 class="font-bold text-sm text-themeText">Financial Controls</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">TRANSACTIONS</span>
+                    <h3 class="font-bold text-sm text-themeText">Transaction Monitoring</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">RESILIENCE</span>
+                    <h3 class="font-bold text-sm text-themeText">Business Continuity</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">SETTLEMENT</span>
+                    <h3 class="font-bold text-sm text-themeText">Reconciliation</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">ETHICS</span>
+                    <h3 class="font-bold text-sm text-themeText">Responsible Access</h3>
+                </div>
+
+                <div class="p-5 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
+                    <span class="text-[10px] font-mono uppercase text-themeMuted block mb-1">REGULATION</span>
+                    <h3 class="font-bold text-sm text-themeText">Compliance</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             WORK WITH IGSL (PARTNERSHIP MODEL)
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>WORK WITH IGSL</span>
+            </div>
+
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                        Complex problems require the right partners.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6">
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        IGSL works with governments, technology companies, financial institutions, professional advisers, infrastructure providers, specialist consultants and operating partners to assemble the capabilities required for each programme.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Two Columns: We Can Act As & Partnership Opportunities -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+                <div class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder">
+                    <div class="flex items-center justify-between pb-6 hairline-b mb-6">
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">ENGAGEMENT ROLES</span>
+                        <span class="text-xs text-themeMuted">CAPABILITY MODES</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight text-themeText mb-4">
+                        We Can Act As
+                    </h3>
+                    <ul class="space-y-3 text-sm font-medium text-themeText">
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Programme Originator</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Lead Consultant &amp; System Architect</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Programme Manager (PMO)</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Technology &amp; Intellectual Property Owner</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Systems Integrator</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Strategic Long-Term Partner</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder">
+                    <div class="flex items-center justify-between pb-6 hairline-b mb-6">
+                        <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">COLLABORATION AREAS</span>
+                        <span class="text-xs text-themeMuted">SECTORS</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight text-themeText mb-4">
+                        Partnership Opportunities
+                    </h3>
+                    <ul class="space-y-3 text-sm font-medium text-themeText">
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Public-Sector &amp; Civic Transformation</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Digital Infrastructure &amp; Cloud Deployment</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>GIS, Addressing &amp; Location Intelligence</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Auditable Technology Platforms</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>African Market Deployment</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="text-themeBrand">↗</span>
+                            <span>Strategic Innovation Ventures</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Start a conversation CTA -->
+            <div class="reveal flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-black text-white rounded-lg">
+                <div>
+                    <h3 class="text-2xl font-bold tracking-tight text-white mb-1">
+                        Start a Conversation
+                    </h3>
+                    <p class="text-sm text-neutral-400">
+                        Explore partnership opportunities or scope an upcoming programme with our senior team.
+                    </p>
+                </div>
+                <a href="index.html#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand hover:text-white transition-colors flex-shrink-0">
+                    Get in touch
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER (Giant Brand Typography IGSL)
+    ========================================== -->
+    <footer class="bg-black text-white pt-16 sm:pt-24 pb-12 overflow-hidden">
+        
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+
+            <!-- Footer Top Bar -->
+            <div class="flex items-center justify-between pb-12 sm:pb-16 text-xs font-semibold tracking-widest uppercase text-neutral-400 border-b border-neutral-800">
+                <span>IGSL — BUILDING SYSTEMS THAT MAKE THINGS WORK</span>
+                
+            </div>
+
+            <!-- Footer Directory Links -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 sm:py-16 text-xs border-b border-neutral-800">
+                
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        CAPABILITIES
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="index.html#what-we-do" class="hover:text-orange-400 transition-colors">Digital Platforms</a></li>
+                        <li><a href="index.html#what-we-do" class="hover:text-orange-400 transition-colors">Geospatial Intelligence</a></li>
+                        <li><a href="index.html#what-we-do" class="hover:text-orange-400 transition-colors">Data Infrastructure</a></li>
+                        <li><a href="index.html#what-we-do" class="hover:text-orange-400 transition-colors">Programme Advisory</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        SOLUTIONS
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="saip.html" class="hover:text-orange-400 transition-colors">SAIP Addressing</a></li>
+                        <li><a href="padvs.html" class="hover:text-orange-400 transition-colors">PADVS Platform</a></li>
+                        <li><a href="solutions.html" class="hover:text-orange-400 transition-colors">Institutional Systems</a></li>
+                        <li><a href="solutions.html" class="hover:text-orange-400 transition-colors">Location Data Engine</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        COMPANY
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="aboutus.html" class="text-orange-400 font-bold transition-colors">About Us</a></li>
+                        <li><a href="experience.html" class="hover:text-orange-400 transition-colors">Experience &amp; Footprint</a></li>
+                        <li><a href="ventures.html" class="hover:text-orange-400 transition-colors">Ventures</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        CONNECT
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><span class="text-neutral-400">Headquarters: Abuja, NG</span></li>
+                        <li><a href="mailto:info@inspiredglobalsystems.com" class="hover:text-orange-400 transition-colors">Direct Inquiries</a></li>
+                        <li><span class="text-neutral-400">Auditable Delivery</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Giant Brand Typography IGSL -->
+            <div class="pt-12 sm:pt-16 pb-4 select-none">
+                <p class="giant-brand-text font-black text-white tracking-tighter text-center sm:text-left leading-none opacity-95 font-display">
+                    IGSL
+                </p>
+            </div>
+
+            <!-- Bottom Sub-Footer Bar -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
+                <p>
+                    &copy; <span id="current-year">2026</span> Inspired Global Systems Limited. All rights reserved.
+                </p>
+                
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS: MOTIONS, MOBILE MENU
+    ========================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearElem = document.getElementById('current-year');
+            if (yearElem) {
+                yearElem.textContent = new Date().getFullYear();
+            }
+
+            // Right-hand slide-in mobile drawer
+            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+
+            function openMobileNav() {
+                mobileNav.classList.remove('translate-x-full');
+                mobileNavBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileNav() {
+                mobileNav.classList.add('translate-x-full');
+                mobileNavBackdrop.classList.add('opacity-0', 'pointer-events-none');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn && mobileNav && mobileNavBackdrop) {
+                mobileMenuBtn.addEventListener('click', openMobileNav);
+                if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMobileNav);
+                mobileNavBackdrop.addEventListener('click', closeMobileNav);
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', closeMobileNav);
+                });
+            }
+
+            // Scroll reveal
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealElements = document.querySelectorAll('.reveal');
+
+            if (!prefersReducedMotion) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -40px 0px',
+                    threshold: 0.08
+                };
+
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add('active');
+                            }, index * 30);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealElements.forEach(el => revealObserver.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('active'));
+            }
+        });
+    </script>
+
+</body>
+</html>

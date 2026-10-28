@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -172,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <!-- Accessibility Skip Link -->
     <a href="#about-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
@@ -197,7 +197,7 @@
                     HOME
                 </a>
 
-                <a href="about.html" class="nav-link active py-1 hover:text-themeBrand" aria-current="page">
+                <a href="aboutus.html" class="nav-link active py-1 hover:text-themeBrand" aria-current="page">
                     ABOUT
                 </a>
 
@@ -252,7 +252,7 @@
 
             <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -282,7 +282,7 @@
 
             <nav class="pt-6 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
                 <a href="index.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">HOME</a>
-                <a href="about.html" class="mobile-nav-link text-themeBrand py-1.5 transition-colors">ABOUT</a>
+                <a href="aboutus.html" class="mobile-nav-link text-themeBrand py-1.5 transition-colors">ABOUT</a>
                 <a href="what-we-do.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">WHAT WE DO</a>
                 
                 <div class="py-2 border-y border-themeBorder flex flex-col gap-2">
@@ -325,7 +325,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-bold tracking-[-0.04em] leading-[1.04] text-themeText max-w-[1240px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Built around complex problems.
                 </h1>
             </div>
@@ -350,6 +350,38 @@
 
             </div>
 
+            <!-- About Hero Image Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[280px] sm:min-h-[420px]">
+                <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" 
+                    alt="Institutional conference room and strategic systems architecture" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter grayscale contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                
+                <div class="absolute top-4 sm:top-8 left-4 sm:left-8 flex items-center gap-2 text-white">
+                    <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                        2006 — PRESENT · STRATEGIC DELIVERY
+                    </span>
+                </div>
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            THE IGSL METHODOLOGY
+                        </span>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
+                            Bringing multidisciplinary specialists and institutional leaders together to solve national-scale challenges.
+                        </h2>
+                    </div>
+                    <div class="text-xs font-mono tracking-widest uppercase text-white/70">
+                        ABUJA · ACCRA · REGIONAL HUBS
+                    </div>
+                </div>
+            </div>
+
         </section>
 
 
@@ -364,7 +396,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Technology is only valuable when it works beyond the technology.
                     </h2>
                 </div>
@@ -391,7 +423,7 @@
             </div>
 
             <div class="reveal pb-12 sm:pb-16 max-w-3xl">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     A structured lifecycle for complex deployments.
                 </h2>
             </div>
@@ -465,7 +497,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         One organisation.<br>Specialist project teams.
                     </h2>
                 </div>
@@ -555,7 +587,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Built for trust.
                     </h2>
                 </div>
@@ -635,7 +667,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Complex problems require the right partners.
                     </h2>
                 </div>
@@ -789,7 +821,7 @@
                         COMPANY
                     </p>
                     <ul class="space-y-2 text-neutral-300">
-                        <li><a href="about.html" class="text-orange-400 font-bold transition-colors">About Us</a></li>
+                        <li><a href="aboutus.html" class="text-orange-400 font-bold transition-colors">About Us</a></li>
                         <li><a href="experience.html" class="hover:text-orange-400 transition-colors">Experience &amp; Footprint</a></li>
                         <li><a href="ventures.html" class="hover:text-orange-400 transition-colors">Ventures</a></li>
                         <li><a href="contact.html" class="hover:text-orange-400 transition-colors">Contact Us</a></li>

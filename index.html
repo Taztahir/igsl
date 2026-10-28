@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -172,7 +172,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <!-- Accessibility Skip Link -->
     <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
@@ -254,7 +254,7 @@
 
             <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -330,7 +330,7 @@
 
             <!-- Giant Bold Headline -->
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Building systems that make things work. Technology, infrastructure, and programme delivery.
                 </h1>
             </div>
@@ -354,6 +354,35 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Hero Architectural & System Infrastructure Showcase with Editorial Hover -->
+            <div class="reveal mt-12 sm:mt-16 group relative overflow-hidden rounded-xl border border-themeBorder bg-neutral-900 aspect-[16/9] sm:aspect-[21/9] min-h-[300px] sm:min-h-[440px]">
+                <img 
+                    src="./assets/geospatial.jpg" 
+                    alt="Sovereign institutional and civic infrastructure architecture" 
+                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                    loading="eager"
+                    decoding="async"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent transition-opacity duration-500"></div>
+                
+                
+
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 text-white">
+                    <div class="">
+                        <span class="text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-2 block">
+                            TWO DECADES OF INSTITUTIONAL DELIVERY
+                        </span>
+                        <h2 class="text-base md:text-3xl lg:text-4xl font-display font-bold tracking-tight text-white leading-tight">
+                            Engineering persistent systems for governance, spatial addressing, and citizen value.
+                        </h2>
+                    </div>
+                    <a href="about.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-bold tracking-wider uppercase hover:bg-themeBrand hover:text-white transition-colors duration-200 shrink-0 self-start sm:self-auto">
+                        <span>Our Capability</span>
+                        <span class="transition-transform group-hover:translate-x-1">→</span>
+                    </a>
+                </div>
             </div>
 
         </section>
@@ -426,7 +455,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Technology must work in the real world.
                     </h2>
                 </div>
@@ -455,7 +484,7 @@
             <!-- Title & Description Split -->
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-14 sm:pb-20 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Integrated capability.<br>Practical delivery.
                     </h2>
                 </div>
@@ -596,7 +625,7 @@
             </div>
 
             <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-12 sm:pb-16">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     Flagship systems<br>and platforms.
                 </h2>
                 <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors self-start sm:self-auto">
@@ -605,68 +634,114 @@
                 </a>
             </div>
 
-            <!-- Two High-Impact Cards (SAIP and PADVS) -->
+            <!-- Two High-Impact Cards (SAIP and PADVS) with Interactive Image Hover -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
 
                 <!-- SAIP Card -->
                 <article id="saip" class="reveal group flex flex-col">
-                    <div class="w-full bg-[#f3f3f5] rounded-md p-8 sm:p-12 min-h-[300px] sm:min-h-[360px] flex flex-col justify-between border border-themeBorder/80 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:border-themeBrand/40">
-                        <div class="flex items-center justify-between text-xs font-mono tracking-widest uppercase text-themeMuted">
-                            <span>PUBLIC DIGITAL INFRASTRUCTURE</span>
-                            <span class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-themeBrand">↗</span>
-                        </div>
-                        <div class="py-12">
-                            <h3 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-themeText mb-3">
-                                SAIP
-                            </h3>
-                            <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-themeMuted">
-                                State Addressing &amp; Identity Programme
-                            </p>
-                        </div>
-                        <div class="text-xs font-mono uppercase tracking-wider text-themeMuted">
-                            SOUTHERN NIGERIA · LIVE DEPLOYMENT
-                        </div>
-                    </div>
+                    <div class="w-full bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-themeBrand/50 flex flex-col justify-between">
+                        
+                        <!-- Image Container with Hover Scale -->
+                        <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/saip-location.jpg" 
+                                alt="Urban street addressing and geospatial grid network" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                                    PUBLIC DIGITAL INFRASTRUCTURE
+                                </span>
+                                <span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-sm group-hover:bg-themeBrand group-hover:text-white transition-colors">↗</span>
+                            </div>
 
-                    <div class="pt-6">
-                        <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
-                            <span class="text-themeText font-mono">SAIP Platform</span>
-                            <span class="text-themeBrand">Geospatial &amp; Location Infrastructure</span>
+                            <div class="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-6 text-white">
+                                <h3 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-1 text-white">
+                                    SAIP
+                                </h3>
+                                <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-neutral-300">
+                                    State Addressing &amp; Identity Programme
+                                </p>
+                            </div>
                         </div>
-                        <p class="text-sm text-themeMuted leading-relaxed pt-3">
-                            A comprehensive framework integrating physical addressing, geospatial information, digital systems and institutional processes to create persistent digital public infrastructure required by modern government. Currently active across Southern Nigeria.
-                        </p>
+
+                        <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                            <div>
+                                <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
+                                    <span class="text-themeText font-mono">SAIP Platform</span>
+                                    <span class="text-themeBrand">Geospatial &amp; Location Infrastructure</span>
+                                </div>
+                                <p class="text-sm text-themeMuted leading-relaxed pt-3">
+                                    A comprehensive framework integrating physical addressing, geospatial information, digital systems and institutional processes to create persistent digital public infrastructure required by modern government. Currently active across Southern Nigeria.
+                                </p>
+                            </div>
+
+                            <div class="pt-6 mt-4 hairline-t flex items-center justify-between">
+                                <span class="text-[11px] font-mono uppercase tracking-wider text-themeMuted">SOUTHERN NIGERIA · LIVE</span>
+                                <a href="saip.html" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand transition-colors">
+                                    <span>Explore SAIP</span>
+                                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </article>
 
                 <!-- PADVS Card -->
                 <article id="padvs" class="reveal group flex flex-col">
-                    <div class="w-full bg-[#f3f3f5] rounded-md p-8 sm:p-12 min-h-[300px] sm:min-h-[360px] flex flex-col justify-between border border-themeBorder/80 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:border-themeBrand/40">
-                        <div class="flex items-center justify-between text-xs font-mono tracking-widest uppercase text-themeMuted">
-                            <span>PROPRIETARY TECHNOLOGY</span>
-                            <span class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-themeBrand">↗</span>
-                        </div>
-                        <div class="py-12">
-                            <h3 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-themeText mb-3">
-                                PADVS
-                            </h3>
-                            <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-themeMuted">
-                                Participation &amp; Digital Value System
-                            </p>
-                        </div>
-                        <div class="text-xs font-mono uppercase tracking-wider text-themeMuted">
-                            ENTERPRISE PLATFORM · CONFIGURABLE OS
-                        </div>
-                    </div>
+                    <div class="w-full bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-themeBrand/50 flex flex-col justify-between">
+                        
+                        <!-- Image Container with Hover Scale -->
+                        <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/padvs-platform.jpg" 
+                                alt="High-availability digital network and enterprise participation platform" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                            
+                            <div class="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between text-white">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
+                                    PROPRIETARY TECHNOLOGY
+                                </span>
+                                <span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-sm group-hover:bg-themeBrand group-hover:text-white transition-colors">↗</span>
+                            </div>
 
-                    <div class="pt-6">
-                        <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
-                            <span class="text-themeText font-mono">PADVS Platform</span>
-                            <span class="text-themeBrand">Auditable Participation &amp; Analytics</span>
+                            <div class="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-6 text-white">
+                                <h3 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-1 text-white">
+                                    PADVS
+                                </h3>
+                                <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-neutral-300">
+                                    Participation &amp; Digital Value System
+                                </p>
+                            </div>
                         </div>
-                        <p class="text-sm text-themeMuted leading-relaxed pt-3">
-                            An IGSL-developed technology platform for structured, measurable and auditable digital participation. Integrates participant engagement, transactions, programme administration, outcome management, financial reconciliation and analytics within a configurable operating environment.
-                        </p>
+
+                        <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                            <div>
+                                <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
+                                    <span class="text-themeText font-mono">PADVS Platform</span>
+                                    <span class="text-themeBrand">Auditable Participation &amp; Analytics</span>
+                                </div>
+                                <p class="text-sm text-themeMuted leading-relaxed pt-3">
+                                    An IGSL-developed technology platform for structured, measurable and auditable digital participation. Integrates participant engagement, transactions, programme administration, outcome management, financial reconciliation and analytics.
+                                </p>
+                            </div>
+
+                            <div class="pt-6 mt-4 hairline-t flex items-center justify-between">
+                                <span class="text-[11px] font-mono uppercase tracking-wider text-themeMuted">ENTERPRISE OS · CONFIGURABLE</span>
+                                <a href="padvs.html" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand transition-colors">
+                                    <span>Explore PADVS</span>
+                                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </article>
 
@@ -686,7 +761,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Experience built<br>over time.
                     </h2>
                 </div>
@@ -758,7 +833,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Nigerian roots.<br>African ambition.
                     </h2>
                 </div>
@@ -778,6 +853,116 @@
                         </span>
                     </div>
                 </div>
+            </div>
+
+            <!-- Venture Ecosystem Cards Grid with Hover Zoom -->
+            <div class="reveal mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- Venture 1: IGS Matrix Ghana -->
+                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
+                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
+                        <img 
+                            src="./assets/igs-matrix-ghana.jpg" 
+                            alt="West African regional market operations" 
+                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                ACCRA · GHANA
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
+                                IGS Matrix Ghana
+                            </h3>
+                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                Nya Mfasoɔ Digital Participation
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-themeMuted leading-relaxed">
+                            Regional operating entity deploying consumer-facing digital participation models and settlement integrations powered by PADVS.
+                        </p>
+                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
+                            <span>Explore Venture</span>
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Venture 2: Moyours Sports Academy -->
+                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
+                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
+                        <img 
+                            src="./assets/moyours-academy-logo.png" 
+                            alt="Sports academy youth training and development" 
+                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                YOUTH TALENT
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
+                                Moyours Sports Academy
+                            </h3>
+                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                Football &amp; Athlete Development
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-themeMuted leading-relaxed">
+                            Youth football development academy providing structured coaching, academic mentorship, and international pathways for athletic talent.
+                        </p>
+                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
+                            <span>Explore Venture</span>
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Venture 3: Agricultural Services -->
+                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
+                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
+                        <img 
+                            src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80" 
+                            alt="Agri-commodity harvesting and value chain processing" 
+                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                COMMODITIES &amp; INPUTS
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
+                                Agricultural Services
+                            </h3>
+                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                Potash Fertilizer &amp; Shea Butter
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-themeMuted leading-relaxed">
+                            Structured commodity operations spanning potash fertilizer importation and international export of raw organic shea butter.
+                        </p>
+                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
+                            <span>Explore Venture</span>
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
             </div>
 
         </section>

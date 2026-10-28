@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -171,7 +171,7 @@
     </style>
 </head>
 
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
 
     <a href="#experience-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
         Skip to main content
@@ -230,7 +230,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
                     Get in touch
                 </a>
 
@@ -302,7 +302,7 @@
             </div>
 
             <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
                     Two decades of institutional experience.
                 </h1>
             </div>
@@ -340,125 +340,245 @@
             </div>
 
             <div class="reveal pb-12 sm:pb-16 max-w-3xl">
-                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                     Experience across complex public and commercial systems.
                 </h2>
             </div>
 
-            <!-- Regional Experience Grid -->
+            <!-- Regional Experience Grid with Rich Images & Hover Effects -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Abuja / FCT -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">FEDERAL CAPITAL</span>
-                            <span class="text-xs text-themeMuted font-mono">AGIS DIGITISATION</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="/assets/experience-abuja.jpg" 
+                                alt="Abuja Federal Capital territory architecture" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    FEDERAL CAPITAL
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    Abuja / FCT
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    AGIS Digitisation &amp; Georeferencing
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            Abuja / FCT
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Participation in urban addressing, street naming, and house numbering initiatives across the FCT, alongside technical assignments connected with AGIS digitisation, mapping, georeferencing, procurement support, and digital infrastructure initiatives.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Participation in urban addressing, street naming, and house numbering initiatives across the FCT, alongside technical assignments connected with AGIS digitisation, mapping, georeferencing, procurement support, and digital infrastructure initiatives.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        Urban Addressing &amp; Geodatabases
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>Urban Addressing &amp; Geodatabases</span>
+                            <span class="text-themeBrand">Abuja PMO</span>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Kaduna -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">NORTH-WEST</span>
-                            <span class="text-xs text-themeMuted font-mono">KADGIS PROCESSES</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/kaduna.jpg" 
+                                alt="Kaduna State cadastral mapping and GIS spatial planning" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    NORTH-WEST
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    Kaduna State
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    KADGIS Processes &amp; Mapping
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            Kaduna
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Experience associated with KADGIS and related cadastral digitisation, GIS mapping, street naming, and house numbering processes, together with institutional capability building and urban-infrastructure delivery support.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Experience associated with KADGIS and related cadastral digitisation, GIS mapping, street naming, and house numbering processes, together with institutional capability building and urban-infrastructure delivery support.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        GIS Cadastre &amp; Infrastructure
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>GIS Cadastre &amp; Infrastructure</span>
+                            <span class="text-themeBrand">Regional Hub</span>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Lagos -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">COMMERCIAL CAPITAL</span>
-                            <span class="text-xs text-themeMuted font-mono">LASAA FRAMEWORK</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="/assets/lagos.jpg" 
+                                alt="Lagos commercial center and outdoor signage regulation" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    COMMERCIAL CAPITAL
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    Lagos State
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    LASAA Framework &amp; Auditing
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            Lagos State
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Contribution to the organisational and business operational framework for the Lagos State Signage and Advertising Agency (LASAA), including monitoring, evaluation, outdoor advertising management, and street-directional signage.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Contribution to the organisational and business operational framework for the Lagos State Signage and Advertising Agency (LASAA), including monitoring, evaluation, outdoor advertising management, and street-directional signage.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        Signage Regulation &amp; Wayfinding
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>Signage Regulation &amp; Wayfinding</span>
+                            <span class="text-themeBrand">200K+ Audit</span>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Enugu, Kano & Borno -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">MULTI-STATE HUBS</span>
-                            <span class="text-xs text-themeMuted font-mono">MUNICIPAL DEPLOYMENTS</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/kano.jpg" 
+                                alt="Municipal surveying and geo-referencing" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    MULTI-STATE HUBS
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    Enugu, Kano &amp; Borno
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    Municipal Deployments &amp; Revenue
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            Enugu, Kano &amp; Borno
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Direct delivery experience in municipal street naming and house numbering programmes, combined with monitoring and revenue-management frameworks for outdoor civic installations and urban information networks.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Direct delivery experience in municipal street naming and house numbering programmes, combined with monitoring and revenue-management frameworks for outdoor civic installations and urban information networks.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        Municipal Systems &amp; Field Survey
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>Municipal Systems &amp; Field Survey</span>
+                            <span class="text-themeBrand">Field Teams</span>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Niger & Kogi -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">NORTH-CENTRAL</span>
-                            <span class="text-xs text-themeMuted font-mono">CIVIC INFRASTRUCTURE</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="./assets/kogi.jpg" 
+                                alt="Civic transit infrastructure and architectural shelters" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    NORTH-CENTRAL
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    Niger &amp; Kogi States
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    Transit Shelters &amp; Gantries
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            Niger &amp; Kogi States
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Execution of civic physical infrastructure including transit shelters, gantries, urban beautification, and street-directional signage frameworks, as well as technology procurement advisory assignments.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Execution of civic physical infrastructure including transit shelters, gantries, urban beautification, and street-directional signage frameworks, as well as technology procurement advisory assignments.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        Transit Wayfinding &amp; Procurement
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>Transit Wayfinding &amp; Procurement</span>
+                            <span class="text-themeBrand">Civic Builds</span>
+                        </div>
                     </div>
                 </article>
 
                 <!-- ICT & Digital Networks -->
-                <article class="reveal p-8 bg-themeSurface rounded-lg border border-themeBorder space-y-4 flex flex-col justify-between">
+                <article class="reveal group bg-white rounded-xl overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between pb-3 hairline-b">
-                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">DIGITAL INFRASTRUCTURE</span>
-                            <span class="text-xs text-themeMuted font-mono">NETWORKS &amp; ACCESS</span>
+                        <div class="relative h-48 overflow-hidden bg-neutral-900">
+                            <img 
+                                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+                                alt="Enterprise digital networks and datacenter infrastructure" 
+                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
+                                    DIGITAL INFRASTRUCTURE
+                                </span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <h3 class="text-xl font-bold tracking-tight text-white">
+                                    ICT &amp; Digital Networks
+                                </h3>
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
+                                    Networks, Telecom &amp; Connectivity
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-themeText mt-3 mb-2">
-                            ICT &amp; Digital Networks
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed">
-                            Extensive experience in enterprise and institutional digital network architectures, broadband expansion, digital-inclusion initiatives, and high-availability technology implementation.
-                        </p>
+                        <div class="p-6">
+                            <p class="text-sm text-themeMuted leading-relaxed">
+                                Extensive experience in enterprise and institutional digital network architectures, broadband expansion, digital-inclusion initiatives, and high-availability technology implementation.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold">
-                        Enterprise Infrastructure &amp; Telecom
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 hairline-t text-xs font-mono text-themeText font-semibold flex items-center justify-between">
+                            <span>Enterprise Infrastructure &amp; Telecom</span>
+                            <span class="text-themeBrand">National Reach</span>
+                        </div>
                     </div>
                 </article>
 
@@ -478,7 +598,7 @@
 
             <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
                 <div class="lg:col-span-6">
-                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
                         Experience that continues to evolve.
                     </h2>
                 </div>
