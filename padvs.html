@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PADVS — Participation and Digital Value System | Inspired Global Systems Limited</title>
+    <meta name="description" content="PADVS - Participation and Digital Value System. Proprietary technology for structured, auditable digital participation programmes.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/igsl-favicon.jpeg">
+    <link rel="apple-touch-icon" href="assets/igsl-favicon.jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        themeBg: 'var(--color-bg)',
+                        themeSurface: 'var(--color-surface)',
+                        themeCard: 'var(--color-card)',
+                        themeBorder: 'var(--color-border)',
+                        themeText: 'var(--color-text)',
+                        themeMuted: 'var(--color-muted)',
+                        themeBrand: 'var(--color-brand)',
+                        themeBrandHover: 'var(--color-brand-hover)',
+                        themeAccent: 'var(--color-accent)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS Variables & Motion Rules -->
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-surface: #f9f9fb;
+            --color-card: #f2f2f6;
+            --color-border: #e5e5ea;
+            --color-text: #09090b;
+            --color-muted: #5e5e68;
+            --color-brand: #ea580c;
+            --color-brand-hover: #c2410c;
+            --color-accent: #10b981;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Reduced Motion Rule */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal,
+            .dropdown-menu-anim {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav link underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-brand);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--color-brand);
+        }
+
+        /* Dropdown Animation */
+        .dropdown-menu-anim {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dropdown-trigger-container:hover .dropdown-menu-anim,
+        .dropdown-trigger-container:focus-within .dropdown-menu-anim {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Status Dot Pulse */
+        @keyframes status-pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .status-dot {
+            animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Giant footer typography */
+        .giant-brand-text {
+            font-size: clamp(4rem, 17vw, 16rem);
+            line-height: 0.82;
+            letter-spacing: -0.05em;
+        }
+
+        .hairline-b {
+            border-bottom: 1px solid var(--color-border);
+        }
+        .hairline-t {
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+
+<body class="bg-themeBg text-themeText selection:bg-black selection:text-white">
+
+    <a href="#padvs-hero" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
+        Skip to main content
+    </a>
+
+    <!-- =========================================
+         HEADER & NAVBAR
+    ========================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/95 hairline-b transition-all duration-200">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+            
+            <a href="index.html" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-black" aria-label="IGSL Home">
+                <img src="./assets/igsl-logo.png" alt="Inspired Global Systems Limited" class="md:w-40 w-36">
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider uppercase text-themeText" aria-label="Main navigation">
+                <a href="index.html" class="nav-link py-1 hover:text-themeBrand">HOME</a>
+                <a href="about.html" class="nav-link py-1 hover:text-themeBrand">ABOUT</a>
+                <a href="what-we-do.html" class="nav-link py-1 hover:text-themeBrand">WHAT WE DO</a>
+
+                <!-- SOLUTIONS & PLATFORMS Dropdown -->
+                <div class="relative dropdown-trigger-container group py-4">
+                    <a href="solutions.html" class="nav-link active flex items-center gap-1.5 py-1 hover:text-themeBrand focus:outline-none uppercase font-bold text-xs">
+                        <span>SOLUTIONS &amp; PLATFORMS</span>
+                        <span class="text-xs transition-transform duration-200 group-hover:rotate-45" aria-hidden="true">+</span>
+                    </a>
+
+                    <div class="dropdown-menu-anim absolute top-full left-0 w-72 bg-white rounded-lg shadow-xl border border-themeBorder p-3 z-50">
+                        <a href="saip.html" class="block p-3 rounded-md hover:bg-themeSurface transition-colors group/item">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-xs text-themeText group-hover/item:text-themeBrand tracking-wider">SAIP</span>
+                                <span class="text-xs text-themeMuted group-hover/item:translate-x-0.5 transition-transform">→</span>
+                            </div>
+                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
+                                State Addressing &amp; Identity Programme
+                            </p>
+                        </a>
+
+                        <div class="hairline-t my-1"></div>
+
+                        <a href="padvs.html" class="block p-3 rounded-md bg-themeSurface transition-colors group/item">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-xs text-themeBrand tracking-wider">PADVS</span>
+                                <span class="text-xs text-themeBrand translate-x-0.5">→</span>
+                            </div>
+                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
+                                Participation and Digital Value System
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="experience.html" class="nav-link py-1 hover:text-themeBrand">EXPERIENCE</a>
+                <a href="ventures.html" class="nav-link py-1 hover:text-themeBrand">VENTURES</a>
+                
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
+                    Get in touch
+                </a>
+
+                <button id="mobile-menu-toggle" type="button" class="lg:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 text-themeText focus:outline-none" aria-label="Open mobile menu" aria-expanded="false">
+                    <span class="w-5 h-0.5 bg-current"></span>
+                    <span class="w-5 h-0.5 bg-current"></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="mobile-nav-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <!-- Mobile Navigation Drawer (Slides from Right) -->
+    <aside id="mobile-nav" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between p-6 sm:p-8 overflow-y-auto" aria-label="Mobile navigation drawer" aria-hidden="true">
+        <div>
+            <div class="flex items-center justify-between pb-6 hairline-b">
+                <span class="text-xs font-mono font-bold tracking-widest uppercase text-themeMuted">NAVIGATION</span>
+                <button id="mobile-menu-close" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-themeText hover:bg-themeSurface focus:outline-none" aria-label="Close menu">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="pt-6 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">HOME</a>
+                <a href="about.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">ABOUT</a>
+                <a href="what-we-do.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">WHAT WE DO</a>
+                
+                <div class="py-2 border-y border-themeBorder flex flex-col gap-2">
+                    <a href="solutions.html" class="text-themeBrand text-[11px] tracking-widest font-bold">SOLUTIONS &amp; PLATFORMS</a>
+                    <a href="saip.html" class="mobile-nav-link pl-3 text-themeText hover:text-themeBrand py-1 flex items-center justify-between">
+                        <span>SAIP (Addressing)</span>
+                        <span>→</span>
+                    </a>
+                    <a href="padvs.html" class="mobile-nav-link pl-3 text-themeBrand font-bold py-1 flex items-center justify-between">
+                        <span>PADVS (Digital Value)</span>
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <a href="experience.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">EXPERIENCE</a>
+                <a href="ventures.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">VENTURES</a>
+                
+            </nav>
+        </div>
+
+        <div class="pt-8 hairline-t">
+            <a href="contact.html" class="w-full inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
+                Get in touch →
+            </a>
+        </div>
+    </aside>
+
+
+    <main>
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+        <section id="padvs-hero" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-24 hairline-b">
+            
+            <div class="reveal flex items-center justify-between pb-6 sm:pb-8 text-xs font-semibold tracking-widest uppercase text-themeMuted hairline-b">
+                <span>PADVS — PARTICIPATION &amp; DIGITAL VALUE SYSTEM</span>
+                <span>PROPRIETARY PLATFORM TECHNOLOGY</span>
+            </div>
+
+            <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
+                <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-bold tracking-[-0.04em] leading-[1.03] text-themeText max-w-[1280px]">
+                    Technology for structured digital participation.
+                </h1>
+            </div>
+
+            <div class="reveal pt-8 hairline-t grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                
+                <div class="md:col-span-8 space-y-4">
+                    <p class="text-xs font-mono uppercase tracking-widest text-themeMuted">
+                        CONFIGURABLE ENGINE · TRANSACTIONS · PMO · VALUE EXCHANGE
+                    </p>
+                    <p class="text-base sm:text-lg md:text-xl text-themeMuted font-normal leading-relaxed max-w-2xl">
+                        PADVS is a proprietary technology platform developed by Inspired Global Systems Limited for creating and operating structured, measurable, and auditable digital participation programmes.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 flex md:justify-end items-start pt-1">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-medium text-themeText">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 status-dot" aria-hidden="true"></span>
+                        <span class="tracking-tight font-medium">Regional Deployment · West Africa</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             8 PLATFORM CAPABILITIES
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>SYSTEM ARCHITECTURE</span>
+            </div>
+
+            <div class="reveal pb-12 sm:pb-16 max-w-3xl">
+                <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                    Eight integrated capabilities in a unified operating environment.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">ENGAGEMENT</span>
+                    <h3 class="text-lg font-bold text-themeText">Participant Registry</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Multi-channel onboarding, authenticated credentials, and structured stakeholder management.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">VALUE EXCHANGE</span>
+                    <h3 class="text-lg font-bold text-themeText">Transaction Processing</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">High-volume transactional execution engine with cryptographic verification and event logging.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">OPERATIONS</span>
+                    <h3 class="text-lg font-bold text-themeText">Programme Admin</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Centralized administrative workspace for multi-operator supervision and role-based workflows.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">GOVERNANCE</span>
+                    <h3 class="text-lg font-bold text-themeText">Configurable Rules</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Dynamic business logic engines governing qualification thresholds, rate caps, and validation checks.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">IMPACT</span>
+                    <h3 class="text-lg font-bold text-themeText">Outcome Management</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Granular milestone verification and outcome delivery tracking tied to performance metrics.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">SETTLEMENT</span>
+                    <h3 class="text-lg font-bold text-themeText">Financial Reconciliation</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Multi-party ledger reconciliation, payment settlement pipelines, and fee distribution management.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">ACCOUNTABILITY</span>
+                    <h3 class="text-lg font-bold text-themeText">Audit &amp; Reporting</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">End-to-end statutory audit trails, tamper-proof reporting, and regulatory compliance exports.</p>
+                </div>
+
+                <div class="reveal p-6 bg-themeSurface rounded-lg border border-themeBorder space-y-2">
+                    <span class="text-xs font-mono font-bold text-themeBrand">TELEMETRY</span>
+                    <h3 class="text-lg font-bold text-themeText">Operational Analytics</h3>
+                    <p class="text-xs text-themeMuted leading-relaxed">Executive dashboards streaming live participation volume, liquidity flows, and anomaly alerts.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CONTROLLED PARTICIPATION PHILOSOPHY
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>OPERATING PHILOSOPHY</span>
+            </div>
+
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
+                        Designed for controlled participation.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6 space-y-4">
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        PADVS is built around the principle that high-volume participation programmes require far more than an attractive consumer interface.
+                    </p>
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        They require a controlled operating environment encompassing secure transactions, rigorous business rules, institutional administration, financial settlement, auditable traceability, and real-time oversight.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PLATFORM + PROGRAMME (GHANA / NYA MFASOƆ)
+        ========================================== -->
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
+            
+            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
+                <span>MARKET APPLICATION &amp; DEPLOYMENT</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">
+                        COMMERCIAL MODEL
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-themeText leading-[1.1]">
+                        Platform + Programme
+                    </h2>
+                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
+                        IGSL owns and develops the PADVS technology and underlying architecture. Market-specific programmes can then be originated and operated through appropriately structured local entities and institutional partnerships.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="p-8 sm:p-10 bg-themeSurface rounded-lg border border-themeBorder space-y-4">
+                        <div class="flex items-center justify-between pb-4 hairline-b">
+                            <span class="text-xs font-mono font-bold tracking-wider uppercase text-themeBrand">GHANA DEPLOYMENT</span>
+                            <span class="text-xs text-themeMuted uppercase font-mono">LIVE INITIATIVE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-themeText">
+                            Nya Mfasoɔ
+                        </h3>
+                        <p class="text-sm text-themeMuted leading-relaxed">
+                            PADVS is being introduced in Ghana through <strong>IGS Matrix Ghana Ltd</strong>, with <strong>Nya Mfasoɔ</strong> as the first consumer-facing digital participation initiative.
+                        </p>
+                        <p class="text-xs text-themeMuted leading-relaxed">
+                            Demonstrating the versatility of the PADVS engine to bridge consumer engagement with auditable financial reconciliation and civic value delivery.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Call to Action Banner -->
+            <div class="reveal mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-12 bg-black text-white rounded-lg">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono uppercase tracking-widest text-orange-400 font-semibold">
+                        PLATFORM LICENSING &amp; PARTNERSHIP
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                        Explore PADVS for Your Market
+                    </h3>
+                    <p class="text-sm text-neutral-400 max-w-xl">
+                        Consult with IGSL's technology partners to discuss platform licensing, white-label deployment, or joint origination opportunities.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-4 flex-shrink-0">
+                    <a href="mailto:info@inspiredglobalsystems.com?subject=PADVS%20Deployment%20Inquiry" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand hover:text-white transition-colors">
+                        Inquire About PADVS →
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="bg-black text-white pt-16 sm:pt-24 pb-12 overflow-hidden">
+        
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+
+            <div class="flex items-center justify-between pb-12 sm:pb-16 text-xs font-semibold tracking-widest uppercase text-neutral-400 border-b border-neutral-800">
+                <span>IGSL — BUILDING SYSTEMS THAT MAKE THINGS WORK</span>
+                <a href="#padvs-hero" class="hover:text-white transition-colors flex items-center gap-1.5" aria-label="Scroll to top of page">
+                    BACK TO TOP <span>↑</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 sm:py-16 text-xs border-b border-neutral-800">
+                
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        CAPABILITIES
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="what-we-do.html" class="hover:text-orange-400 transition-colors">Digital Platforms</a></li>
+                        <li><a href="what-we-do.html" class="hover:text-orange-400 transition-colors">Geospatial Intelligence</a></li>
+                        <li><a href="what-we-do.html" class="hover:text-orange-400 transition-colors">Data Infrastructure</a></li>
+                        <li><a href="what-we-do.html" class="hover:text-orange-400 transition-colors">Programme Advisory</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        SOLUTIONS
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="saip.html" class="hover:text-orange-400 transition-colors">SAIP Addressing</a></li>
+                        <li><a href="padvs.html" class="text-orange-400 font-bold transition-colors">PADVS Platform</a></li>
+                        <li><a href="solutions.html" class="hover:text-orange-400 transition-colors">Institutional Systems</a></li>
+                        <li><a href="solutions.html" class="hover:text-orange-400 transition-colors">Location Data Engine</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        COMPANY
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><a href="about.html" class="hover:text-orange-400 transition-colors">About Us</a></li>
+                        <li><a href="experience.html" class="hover:text-orange-400 transition-colors">Experience &amp; Footprint</a></li>
+                        <li><a href="ventures.html" class="hover:text-orange-400 transition-colors">Ventures</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
+                        CONNECT
+                    </p>
+                    <ul class="space-y-2 text-neutral-300">
+                        <li><span class="text-neutral-400">Headquarters: Abuja, NG</span></li>
+                        <li><a href="mailto:info@inspiredglobalsystems.com" class="hover:text-orange-400 transition-colors">Direct Inquiries</a></li>
+                        <li><span class="text-neutral-400">Auditable Delivery</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-12 sm:pt-16 pb-4 select-none">
+                <p class="giant-brand-text font-black text-white tracking-tighter text-center sm:text-left leading-none opacity-95 font-display">
+                    IGSL
+                </p>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
+                <p>
+                    &copy; <span id="current-year">2026</span> Inspired Global Systems Limited. All rights reserved.
+                </p>
+                <div class="flex items-center gap-6">
+                    <span>Technology</span>
+                    <span>·</span>
+                    <span>Infrastructure</span>
+                    <span>·</span>
+                    <span>Data</span>
+                    <span>·</span>
+                    <span>Programme Delivery</span>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS: MOTIONS, MOBILE MENU (RIGHT SLIDE)
+    ========================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearElem = document.getElementById('current-year');
+            if (yearElem) {
+                yearElem.textContent = new Date().getFullYear();
+            }
+
+            // Right-hand slide-in mobile drawer
+            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+
+            function openMobileNav() {
+                mobileNav.classList.remove('translate-x-full');
+                mobileNavBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileNav() {
+                mobileNav.classList.add('translate-x-full');
+                mobileNavBackdrop.classList.add('opacity-0', 'pointer-events-none');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn && mobileNav && mobileNavBackdrop) {
+                mobileMenuBtn.addEventListener('click', openMobileNav);
+                if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMobileNav);
+                mobileNavBackdrop.addEventListener('click', closeMobileNav);
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', closeMobileNav);
+                });
+            }
+
+            // Scroll reveal
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealElements = document.querySelectorAll('.reveal');
+
+            if (!prefersReducedMotion) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -40px 0px',
+                    threshold: 0.08
+                };
+
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add('active');
+                            }, index * 30);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealElements.forEach(el => revealObserver.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('active'));
+            }
+        });
+    </script>
+
+</body>
+</html>
