@@ -1,1274 +1,1296 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inspired Global Systems Limited | Building Systems That Make Things Work</title>
-    <meta name="description" content="Inspired Global Systems Limited (IGSL) designs, develops and delivers technology-enabled systems and complex programmes for governments, institutions and businesses.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/igsl-favicon.jpeg">
-    <link rel="apple-touch-icon" href="assets/igsl-favicon.jpeg">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        themeBg: 'var(--color-bg)',
-                        themeSurface: 'var(--color-surface)',
-                        themeCard: 'var(--color-card)',
-                        themeBorder: 'var(--color-border)',
-                        themeText: 'var(--color-text)',
-                        themeMuted: 'var(--color-muted)',
-                        themeBrand: 'var(--color-brand)',
-                        themeBrandHover: 'var(--color-brand-hover)',
-                        themeAccent: 'var(--color-accent)',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- CSS Variables & Motion Rules -->
-    <style>
-        :root {
-            --color-bg: #ffffff;
-            --color-surface: #f9f9fb;
-            --color-card: #f2f2f6;
-            --color-border: #e5e5ea;
-            --color-text: #09090b;
-            --color-muted: #5e5e68;
-            --color-brand: #ea580c; /* High-visibility orange from user screenshot */
-            --color-brand-hover: #c2410c;
-            --color-accent: #10b981;
-        }
-
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Prefer Reduced Motion Rule */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .reveal,
-            .dropdown-menu-anim {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-
-        /* Scroll reveal animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Nav Link Underline Motion */
-        .nav-link {
-            position: relative;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-brand);
-            transition: width 0.25s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-link.active {
-            color: var(--color-brand);
-        }
-
-        /* Dropdown Animation */
-        .dropdown-menu-anim {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .dropdown-trigger-container:hover .dropdown-menu-anim,
-        .dropdown-trigger-container:focus-within .dropdown-menu-anim {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Live status dot pulse */
-        @keyframes status-pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
-        }
-
-        .status-dot {
-            animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        /* Giant footer typography */
-        .giant-brand-text {
-            font-size: clamp(4rem, 17vw, 16rem);
-            line-height: 0.82;
-            letter-spacing: -0.05em;
-        }
-
-        /* Hairline borders */
-        .hairline-b {
-            border-bottom: 1px solid var(--color-border);
-        }
-        .hairline-t {
-            border-top: 1px solid var(--color-border);
-        }
-    </style>
-</head>
-
-<body class="bg-themeBg text-themeText selection:bg-black selection:text-white overflow-x-hidden min-h-screen">
-
-    <!-- Accessibility Skip Link -->
-    <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none">
-        Skip to main content
-    </a>
-
-    <!-- =========================================
-         HEADER & NAVBAR (Matches user image & links)
-    ========================================== -->
-    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/95 hairline-b transition-all duration-200">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
-            
-            <!-- Brand / Logo -->
-            <a href="#home" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-black" aria-label="IGSL Home">
-                <img src="./assets/igsl-logo.png" alt="" class="md:w-40 w-36">
-            </a>
-
-            <!-- Desktop Navigation Links matching user screenshot -->
-            <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider uppercase text-themeText" aria-label="Main navigation">
-                
-                <a href="#home" class="nav-link py-1 hover:text-themeBrand">
-                    HOME
-                </a>
-
-                <a href="about.html" class="nav-link py-1 hover:text-themeBrand">
-                    ABOUT
-                </a>
-
-                <a href="what-we-do.html" class="nav-link py-1 hover:text-themeBrand">
-                    WHAT WE DO
-                </a>
-
-                <!-- SOLUTIONS & PLATFORMS with Dropdown (SAIP, PADVS) -->
-                <div class="relative dropdown-trigger-container group py-4">
-                    <a href="solutions.html" class="nav-link flex items-center gap-1.5 py-1 hover:text-themeBrand focus:outline-none uppercase font-bold text-xs">
-                        <span>SOLUTIONS &amp; PLATFORMS</span>
-                        <span class="text-xs transition-transform duration-200 group-hover:rotate-45" aria-hidden="true">+</span>
-                    </a>
-
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown-menu-anim absolute top-full left-0 w-72 bg-white rounded-lg shadow-xl border border-themeBorder p-3 z-50">
-                        
-                        <a href="saip.html" class="block p-3 rounded-md hover:bg-themeSurface transition-colors group/item">
-                            <div class="flex items-center justify-between">
-                                <span class="font-bold text-xs text-themeText group-hover/item:text-themeBrand tracking-wider">SAIP</span>
-                                <span class="text-xs text-themeMuted group-hover/item:translate-x-0.5 transition-transform">→</span>
-                            </div>
-                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
-                                State Addressing &amp; Identity Programme
-                            </p>
-                        </a>
-
-                        <div class="hairline-t my-1"></div>
-
-                        <a href="padvs.html" class="block p-3 rounded-md hover:bg-themeSurface transition-colors group/item">
-                            <div class="flex items-center justify-between">
-                                <span class="font-bold text-xs text-themeText group-hover/item:text-themeBrand tracking-wider">PADVS</span>
-                                <span class="text-xs text-themeMuted group-hover/item:translate-x-0.5 transition-transform">→</span>
-                            </div>
-                            <p class="text-[11px] text-themeMuted mt-1 leading-normal">
-                                Participation and Digital Value System
-                            </p>
-                        </a>
-
-                    </div>
-                </div>
-
-                <a href="experience.html" class="nav-link py-1 hover:text-themeBrand">
-                    EXPERIENCE
-                </a>
-
-                <a href="ventures.html" class="nav-link py-1 hover:text-themeBrand">
-                    VENTURES
-                </a>
-
-                
-
-            </nav>
-
-            <!-- Actions: Pill CTA Button & Mobile Menu Trigger -->
-            <div class="flex items-center gap-3">
-                <a href="contact.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black">
-                    Get in touch
-                </a>
-
-                <!-- Mobile Hamburger Toggle -->
-                <button id="mobile-menu-toggle" type="button" class="lg:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 text-themeText focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="w-5 h-0.5 bg-current transition-transform duration-200"></span>
-                    <span class="w-5 h-0.5 bg-current transition-transform duration-200"></span>
-                </button>
-            </div>
-
-        </div>
-    </header>
-
-    <!-- Mobile Drawer Backdrop Overlay -->
-    <div id="mobile-nav-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-    <!-- Mobile Navigation Drawer (Slides from Right) -->
-    <aside id="mobile-nav" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between p-6 sm:p-8 overflow-y-auto" aria-label="Mobile navigation drawer" aria-hidden="true">
-        <div>
-            <div class="flex items-center justify-between pb-6 hairline-b">
-                <span class="text-xs font-mono font-bold tracking-widest uppercase text-themeMuted">NAVIGATION</span>
-                <button id="mobile-menu-close" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-themeText hover:bg-themeSurface focus:outline-none" aria-label="Close menu">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <nav class="pt-6 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
-                <a href="#home" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">HOME</a>
-                <a href="about.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">ABOUT</a>
-                <a href="what-we-do.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">WHAT WE DO</a>
-                
-                <div class="py-2 border-y border-themeBorder flex flex-col gap-2">
-                    <a href="solutions.html" class="text-themeBrand text-[11px] tracking-widest font-bold">SOLUTIONS &amp; PLATFORMS</a>
-                    <a href="saip.html" class="mobile-nav-link pl-3 text-themeText hover:text-themeBrand py-1 flex items-center justify-between">
-                        <span>SAIP (Addressing)</span>
-                        <span>→</span>
-                    </a>
-                    <a href="padvs.html" class="mobile-nav-link pl-3 text-themeText hover:text-themeBrand py-1 flex items-center justify-between">
-                        <span>PADVS (Digital Value)</span>
-                        <span>→</span>
-                    </a>
-                </div>
-
-                <a href="experience.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">EXPERIENCE</a>
-                <a href="ventures.html" class="mobile-nav-link text-themeText hover:text-themeBrand py-1.5 transition-colors">VENTURES</a>
-                
-            </nav>
-        </div>
-
-        <div class="pt-8 hairline-t">
-            <a href="contact.html" class="w-full inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
-                Get in touch →
-            </a>
-        </div>
-    </aside>
-    </header>
-
-
-    <main>
-
-        <!-- =========================================
-             HERO (HOME SECTION)
-        ========================================== -->
-        <section id="home" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-24 hairline-b">
-            
-            <!-- Eyebrow Meta Row (Numbers removed) -->
-            <div class="reveal flex items-center justify-between pb-6 sm:pb-8 text-xs font-semibold tracking-widest uppercase text-themeMuted hairline-b">
-                <span>INTRODUCTION</span>
-                <!-- <span>ESTABLISHED NIGERIA &amp; WEST AFRICA</span> -->
-            </div>
-
-            <!-- Giant Bold Headline -->
-            <div class="reveal pt-8 sm:pt-14 pb-12 sm:pb-20">
-                <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-bold tracking-tight sm:tracking-[-0.04em] leading-[1.08] sm:leading-[1.03] text-themeText max-w-[1280px] break-words">
-                    Building systems that make things work. Technology, infrastructure, and programme delivery.
-                </h1>
-            </div>
-
-            <!-- Hero Subtext & Live Status Badge -->
-            <div class="reveal pt-8 hairline-t grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                
-                <div class="md:col-span-8 space-y-4">
-                    <p class="text-xs font-mono uppercase tracking-widest text-themeMuted">
-                        ABUJA · LAGOS · WEST AFRICA
-                    </p>
-                    <p class="text-base sm:text-lg md:text-xl text-themeMuted font-normal leading-relaxed max-w-2xl">
-                        Inspired Global Systems Limited (IGSL) designs, develops and delivers technology-enabled systems and complex programmes for governments, institutions and businesses.
-                    </p>
-                </div>
-
-                <div class="md:col-span-4 flex md:justify-end items-start pt-1">
-                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-medium text-themeText">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 status-dot" aria-hidden="true"></span>
-                        <span class="tracking-tight font-medium">Active Deployments · West Africa</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Hero Architectural & System Infrastructure Showcase with Editorial Hover -->
-            <div class="reveal mt-8 sm:mt-12 md:mt-16 group relative w-full overflow-hidden rounded-xl sm:rounded-2xl border border-themeBorder bg-neutral-900 min-h-[320px] sm:min-h-[380px] md:min-h-[440px] flex flex-col justify-between p-5 sm:p-8 md:p-10 box-border">
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+<head> 
+ 
+    <meta charset="UTF-8"> 
+     
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1.0" 
+    > 
+ 
+    <title> 
+        Inspired Global Systems Limited | Building Systems That Make Things Work. 
+    </title> 
+ 
+    <meta 
+        name="description" 
+        content="Inspired Global Systems Limited (IGSL) designs, develops and delivers technology-enabled systems and complex programmes for governments, institutions and businesses." 
+    > 
+ 
+    <link rel="stylesheet" href="style.css"> 
+ 
+</head> 
+ 
+ 
+<body> 
+ 
+ 
+    <!-- ========================================= 
+         HEADER 
+    ========================================== --> 
+ 
+    <header class="site-header"> 
+ 
+        <div class="container nav-container"> 
+ 
+            <a 
+                href="index.html" 
+                class="logo" 
+                aria-label="Inspired Global Systems Limited Home" 
+            > 
+ 
                 <img 
-                    src="./assets/geospatial.jpg" 
-                    alt="Sovereign institutional and civic infrastructure architecture" 
-                    class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100" 
-                    loading="eager"
-                    decoding="async"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/25 pointer-events-none"></div>
-                
-                <div class="relative z-10 flex items-center justify-between gap-2 max-w-full">
-                    <span class="inline-flex items-center px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] sm:text-[11px] font-mono font-bold tracking-widest uppercase border border-white/20 text-white max-w-full truncate">
-                        2004 — PRESENT · PAN-AFRICAN DELIVERY
-                    </span>
-                </div>
-
-                <div class="relative z-10 pt-6 sm:pt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 text-white w-full">
-                    <div class="max-w-2xl min-w-0">
-                        <span class="text-[11px] sm:text-xs font-mono tracking-widest uppercase text-orange-400 font-semibold mb-1.5 sm:mb-2 block">
-                            TWO DECADES OF INSTITUTIONAL DELIVERY
-                        </span>
-                        <h2 class="text-lg sm:text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-snug sm:leading-tight break-words">
-                            Engineering persistent systems for governance, spatial addressing, and citizen value.
-                        </h2>
-                    </div>
-                    <a href="about.html" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-black text-xs font-bold tracking-wider uppercase hover:bg-themeBrand hover:text-white transition-colors duration-200 shrink-0 self-start sm:self-auto">
-                        <span>Our Capability</span>
-                        <span class="transition-transform group-hover:translate-x-1">→</span>
-                    </a>
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             SELECTED CLIENTS & SECTORS
-        ========================================== -->
-        <section class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14 hairline-b" aria-label="Sectors and Footprint">
-            
-            <div class="reveal flex items-center justify-between pb-8 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>SECTOR FOOTPRINT</span>
-                <span>INSTITUTIONAL DOMAINS</span>
-            </div>
-
-            <!-- Minimalist Monogram / Sector Marks Grid -->
-            <div class="reveal grid grid-cols-2 sm:grid-cols-5 gap-8 sm:gap-12 items-center justify-items-center opacity-85 hover:opacity-100 transition-opacity duration-200">
-                
-                <div class="flex flex-col items-center gap-2 group cursor-default">
-                    <svg class="h-8 w-auto text-themeText group-hover:scale-105 transition-transform" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true">
-                        <path d="M15 10 h70 v6 H15 z M15 22 h50 v6 H15 z M75 22 h10 v6 H75 z" />
-                    </svg>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-themeMuted">Public Sector</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-2 group cursor-default">
-                    <svg class="h-8 w-auto text-themeText group-hover:scale-105 transition-transform" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true">
-                        <rect x="20" y="8" width="60" height="24" rx="12" fill="none" stroke="currentColor" stroke-width="5" />
-                        <circle cx="50" cy="20" r="5" />
-                    </svg>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-themeMuted">Geospatial GIS</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-2 group cursor-default">
-                    <svg class="h-8 w-auto text-themeText group-hover:scale-105 transition-transform" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true">
-                        <circle cx="35" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="5" />
-                        <circle cx="65" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="5" />
-                    </svg>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-themeMuted">Infrastructure</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-2 group cursor-default">
-                    <svg class="h-8 w-auto text-themeText group-hover:scale-105 transition-transform" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true">
-                        <path d="M25 28 L40 10 L55 28 L70 10 L85 28" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-themeMuted">Data Systems</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-2 group cursor-default col-span-2 sm:col-span-1">
-                    <svg class="h-8 w-auto text-themeText group-hover:scale-105 transition-transform" viewBox="0 0 100 40" fill="currentColor" aria-hidden="true">
-                        <rect x="25" y="10" width="20" height="20" />
-                        <rect x="55" y="10" width="20" height="20" />
-                    </svg>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-themeMuted">Ventures</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             ABOUT SECTION
-        ========================================== -->
-        <section id="about" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>WHO WE ARE</span>
-            </div>
-
-            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
-                <div class="lg:col-span-6">
-                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
-                        Technology must work in the real world.
-                    </h2>
-                </div>
-                <div class="lg:col-span-6 space-y-4">
-                    <p class="text-lg sm:text-xl font-medium text-themeText leading-relaxed">
-                        For two decades, IGSL has worked at the intersection of technology, data, infrastructure and institutional transformation.
-                    </p>
-                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
-                        We combine strategic advisory, systems design, programme management and implementation capability to solve complex operational problems — particularly where technology must work within real institutions, physical environments and regulatory frameworks.
-                    </p>
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             WHAT WE DO (CAPABILITIES)
-        ========================================== -->
-        <section id="what-we-do" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>WHAT WE DO</span>
-            </div>
-
-            <!-- Title & Description Split -->
-            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-14 sm:pb-20 items-baseline">
-                <div class="lg:col-span-6">
-                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
-                        Integrated capability.<br>Practical delivery.
-                    </h2>
-                </div>
-                <div class="lg:col-span-6">
-                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed max-w-xl">
-                        Every engagement is led by partners who are relentlessly hands-on. Small teams, deep conviction, and operational outputs. We design systems that last, not slide decks.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Practice Grid with No 01/02 numbering -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-
-                <!-- Digital Platforms & Systems -->
-                <article class="reveal hairline-t pt-8 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex justify-between items-baseline mb-6">
-                            <span class="text-xs font-mono font-medium tracking-wider uppercase text-themeMuted">PLATFORMS</span>
-                            <span class="text-xs text-themeMuted group-hover:text-themeBrand transition-colors">↗</span>
-                        </div>
-                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-3">
-                            Digital Platforms &amp; Systems
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed mb-8">
-                            Secure transactional, administrative and institutional platforms engineered for sovereignty, scale, and high-availability operations.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 hairline-t">
-                        <p class="text-[11px] font-mono uppercase tracking-wider text-themeMuted mb-3">
-                            INCLUDES
-                        </p>
-                        <ul class="text-xs text-themeText space-y-1.5 font-medium">
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Platform Architecture</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Transactional Systems</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Administrative Portals</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Security &amp; Governance</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Geospatial & Location Intelligence -->
-                <article class="reveal hairline-t pt-8 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex justify-between items-baseline mb-6">
-                            <span class="text-xs font-mono font-medium tracking-wider uppercase text-themeMuted">SPATIAL</span>
-                            <span class="text-xs text-themeMuted group-hover:text-themeBrand transition-colors">↗</span>
-                        </div>
-                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-3">
-                            Geospatial &amp; Location Intelligence
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed mb-8">
-                            GIS, digital addressing frameworks, spatial databases, and location-enabled services built for governance and civic enablement.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 hairline-t">
-                        <p class="text-[11px] font-mono uppercase tracking-wider text-themeMuted mb-3">
-                            INCLUDES
-                        </p>
-                        <ul class="text-xs text-themeText space-y-1.5 font-medium">
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Digital Addressing (SAIP)</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Spatial Geodatabases</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">GIS Mapping &amp; Survey</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Location APIs &amp; Services</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Data & Digital Infrastructure -->
-                <article class="reveal hairline-t pt-8 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex justify-between items-baseline mb-6">
-                            <span class="text-xs font-mono font-medium tracking-wider uppercase text-themeMuted">INFRASTRUCTURE</span>
-                            <span class="text-xs text-themeMuted group-hover:text-themeBrand transition-colors">↗</span>
-                        </div>
-                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-3">
-                            Data &amp; Digital Infrastructure
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed mb-8">
-                            Data architecture, analytics pipelines, executive command dashboards and resilient institutional infrastructure.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 hairline-t">
-                        <p class="text-[11px] font-mono uppercase tracking-wider text-themeMuted mb-3">
-                            INCLUDES
-                        </p>
-                        <ul class="text-xs text-themeText space-y-1.5 font-medium">
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Data Architecture</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Real-time Analytics</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Executive Dashboards</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Cloud &amp; Hybrid Storage</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Programme Delivery & Advisory -->
-                <article class="reveal hairline-t pt-8 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex justify-between items-baseline mb-6">
-                            <span class="text-xs font-mono font-medium tracking-wider uppercase text-themeMuted">DELIVERY</span>
-                            <span class="text-xs text-themeMuted group-hover:text-themeBrand transition-colors">↗</span>
-                        </div>
-                        <h3 class="text-xl font-bold tracking-tight text-themeText mb-3">
-                            Programme Delivery &amp; Advisory
-                        </h3>
-                        <p class="text-sm text-themeMuted leading-relaxed mb-8">
-                            Programme architecture, PMO oversight, procurement support, implementation and independent technical assurance.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 hairline-t">
-                        <p class="text-[11px] font-mono uppercase tracking-wider text-themeMuted mb-3">
-                            INCLUDES
-                        </p>
-                        <ul class="text-xs text-themeText space-y-1.5 font-medium">
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Programme Architecture</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">PMO &amp; Governance</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Procurement Support</li>
-                            <li class="hover:text-themeBrand cursor-pointer transition-colors">Technical Assurance</li>
-                        </ul>
-                    </div>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             SOLUTIONS & PLATFORMS (SAIP, PADVS)
-        ========================================== -->
-        <section id="solutions" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>SOLUTIONS &amp; PLATFORMS</span>
-            </div>
-
-            <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-12 sm:pb-16">
-                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
-                    Flagship systems<br>and platforms.
-                </h2>
-                <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors self-start sm:self-auto">
-                    Discuss a Project
-                    <span aria-hidden="true">→</span>
-                </a>
-            </div>
-
-            <!-- Two High-Impact Cards (SAIP and PADVS) with Interactive Image Hover -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-
-                <!-- SAIP Card -->
-                <article id="saip" class="reveal group flex flex-col">
-                    <div class="w-full bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-themeBrand/50 flex flex-col justify-between">
-                        
-                        <!-- Image Container with Hover Scale -->
-                        <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-neutral-900">
+                    src="images/igsl-logo.png" 
+                    alt="Inspired Global Systems Limited" 
+                    class="site-logo" 
+                > 
+ 
+            </a> 
+ 
+ 
+            <button 
+                class="menu-toggle" 
+                type="button" 
+                aria-label="Open navigation menu" 
+                aria-expanded="false" 
+            > 
+ 
+                <span></span> 
+                <span></span> 
+                <span></span> 
+ 
+            </button> 
+ 
+ 
+            <nav 
+                class="main-nav" 
+                aria-label="Main navigation" 
+            > 
+ 
+                <a 
+                    href="index.html" 
+                    class="active" 
+                    aria-current="page" 
+                > 
+                    HOME 
+                </a> 
+ 
+                <a href="about.html"> 
+                    ABOUT 
+                </a> 
+ 
+                <a href="what-we-do.html"> 
+                    WHAT WE DO 
+                </a> 
+ 
+ 
+                <div class="nav-dropdown"> 
+ 
+                    <a 
+                        href="solutions.html" 
+                        class="dropdown-trigger" 
+                        aria-expanded="false" 
+                    > 
+ 
+                        SOLUTIONS &amp; PLATFORMS 
+ 
+                        <span aria-hidden="true"> 
+                            + 
+                        </span> 
+ 
+                    </a> 
+ 
+ 
+                    <div class="dropdown-menu"> 
+ 
+                        <a href="saip.html"> 
+                            SAIP 
+                        </a> 
+ 
+                        <a href="padvs.html"> 
+                            PADVS 
+                        </a> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+                <a href="experience.html"> 
+                    EXPERIENCE 
+                </a> 
+ 
+                <a href="ventures.html"> 
+                    VENTURES 
+                </a> 
+ 
+                <a href="insights.html"> 
+                    INSIGHTS 
+                </a> 
+ 
+                <a href="contact.html"> 
+                    CONTACT 
+                </a> 
+ 
+            </nav> 
+ 
+        </div> 
+ 
+    </header> 
+ 
+ 
+ 
+    <main> 
+ 
+ 
+        <!-- ========================================= 
+             HERO 
+        ========================================== --> 
+ 
+        <section class="hero"> 
+ 
+            <div class="hero-background"> 
+ 
+                <img 
+                    src="images/hero-city.jpg" 
+                    alt="" 
+                    aria-hidden="true" 
+                > 
+ 
+                <div 
+                    class="hero-overlay" 
+                    aria-hidden="true" 
+                ></div> 
+ 
+            </div> 
+ 
+ 
+            <div class="container hero-content"> 
+ 
+                <div class="hero-copy"> 
+ 
+                    <p class="eyebrow"> 
+                        INSPIRED GLOBAL SYSTEMS LIMITED 
+                    </p> 
+ 
+ 
+                    <h1> 
+                        Building Systems That Make Things Work. 
+                    </h1> 
+ 
+ 
+                    <p class="hero-tagline"> 
+                        Technology. Infrastructure. Data. Programme Delivery. 
+                    </p> 
+ 
+ 
+                    <p class="hero-description"> 
+ 
+                        Inspired Global Systems Limited (IGSL) designs, develops and 
+                        delivers technology-enabled systems and complex programmes for 
+                        governments, institutions and businesses. 
+ 
+                    </p> 
+ 
+ 
+                    <p class="hero-description"> 
+ 
+                        From geospatial and addressing infrastructure to digital platforms, 
+                        data systems and programme delivery, we bring together technology, 
+                        people, processes and governance to turn complex ideas into 
+                        operational systems. 
+ 
+                    </p> 
+ 
+ 
+                    <div class="hero-actions"> 
+ 
+                        <a 
+                            href="experience.html" 
+                            class="btn btn-primary" 
+                        > 
+ 
+                            Explore Our Work 
+ 
+                            <span aria-hidden="true"> 
+                                → 
+                            </span> 
+ 
+                        </a> 
+ 
+ 
+                        <a 
+                            href="contact.html" 
+                            class="btn btn-secondary" 
+                        > 
+ 
+                            Work With Us 
+ 
+                            <span aria-hidden="true"> 
+                                → 
+                            </span> 
+ 
+                        </a> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+            </div> 
+ 
+ 
+            <div class="hero-scroll"> 
+ 
+                <span> 
+                    Scroll to explore 
+                </span> 
+ 
+                <div 
+                    class="scroll-line" 
+                    aria-hidden="true" 
+                ></div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             WHO WE ARE 
+        ========================================== --> 
+ 
+        <section class="section who-we-are"> 
+ 
+            <div class="container"> 
+ 
+ 
+                <div class="section-intro"> 
+ 
+                    <div> 
+ 
+                        <p class="eyebrow"> 
+                            WHO WE ARE 
+                        </p> 
+ 
+                        <h2> 
+                            Technology must work in the real world. 
+                        </h2> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="who-grid"> 
+ 
+ 
+                    <div class="who-statement"> 
+ 
+                        <p class="large-statement"> 
+ 
+                            For two decades, IGSL has worked at the intersection of 
+                            technology, data, infrastructure and institutional transformation. 
+ 
+                        </p> 
+ 
+                    </div> 
+ 
+ 
+ 
+                    <div class="who-content"> 
+ 
+                        <p> 
+ 
+                            We combine strategic advisory, systems design, programme 
+                            management and implementation capability to solve complex 
+                            operational problems - particularly where technology must work 
+                            within real institutions, physical environments and regulatory 
+                            frameworks. 
+ 
+                        </p> 
+ 
+ 
+                        <div class="philosophy-line"> 
+ 
+                            <span aria-hidden="true"></span> 
+ 
+                            <strong> 
+ 
+                                Understand the problem. Design the system. Build the capability. 
+                                Deliver the outcome. 
+ 
+                            </strong> 
+ 
+                        </div> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             WHAT WE DO 
+        ========================================== --> 
+ 
+        <section class="section capabilities"> 
+ 
+            <div class="container"> 
+ 
+ 
+                <div class="section-heading-row"> 
+ 
+                    <div> 
+ 
+                        <p class="eyebrow"> 
+                            WHAT WE DO 
+                        </p> 
+ 
+                        <h2> 
+                            Integrated Capability. Practical Delivery. 
+                        </h2> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="capability-grid"> 
+ 
+ 
+                    <!-- DIGITAL PLATFORMS & SYSTEMS --> 
+ 
+                    <article class="capability-card"> 
+ 
+                        <div class="capability-image"> 
+ 
                             <img 
-                                src="./assets/saip-location.jpg" 
-                                alt="Urban street addressing and geospatial grid network" 
-                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                                loading="lazy"
-                            >
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
-                            
-                            <div class="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between text-white">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
-                                    PUBLIC DIGITAL INFRASTRUCTURE
-                                </span>
-                                <span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-sm group-hover:bg-themeBrand group-hover:text-white transition-colors">↗</span>
-                            </div>
-
-                            <div class="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-6 text-white">
-                                <h3 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-1 text-white">
-                                    SAIP
-                                </h3>
-                                <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-neutral-300">
-                                    State Addressing &amp; Identity Programme
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                            <div>
-                                <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
-                                    <span class="text-themeText font-mono">SAIP Platform</span>
-                                    <span class="text-themeBrand">Geospatial &amp; Location Infrastructure</span>
-                                </div>
-                                <p class="text-sm text-themeMuted leading-relaxed pt-3">
-                                    A comprehensive framework integrating physical addressing, geospatial information, digital systems and institutional processes to create persistent digital public infrastructure required by modern government. Currently active across Southern Nigeria.
-                                </p>
-                            </div>
-
-                            <div class="pt-6 mt-4 hairline-t flex items-center justify-between">
-                                <span class="text-[11px] font-mono uppercase tracking-wider text-themeMuted">SOUTHERN NIGERIA · LIVE</span>
-                                <a href="saip.html" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand transition-colors">
-                                    <span>Explore SAIP</span>
-                                    <span class="group-hover:translate-x-1 transition-transform">→</span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </article>
-
-                <!-- PADVS Card -->
-                <article id="padvs" class="reveal group flex flex-col">
-                    <div class="w-full bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-themeBrand/50 flex flex-col justify-between">
-                        
-                        <!-- Image Container with Hover Scale -->
-                        <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-neutral-900">
+                                src="images/what-we-do/digital-systems.jpg" 
+                                alt="Digital platforms and systems" 
+                                loading="lazy" 
+                            > 
+ 
+                        </div> 
+ 
+ 
+                        <div class="capability-card-content"> 
+ 
+                            <div class="capability-number"> 
+                                01 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Digital Platforms &amp; Systems 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Secure transactional, administrative and institutional 
+                                platforms. 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+ 
+                    <!-- GEOSPATIAL & LOCATION INTELLIGENCE --> 
+ 
+                    <article class="capability-card featured-capability"> 
+ 
+                        <div class="capability-image"> 
+ 
                             <img 
-                                src="./assets/padvs-platform.jpg" 
-                                alt="High-availability digital network and enterprise participation platform" 
-                                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 filter contrast-105 group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                                loading="lazy"
-                            >
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
-                            
-                            <div class="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between text-white">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
-                                    PROPRIETARY TECHNOLOGY
-                                </span>
-                                <span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-sm group-hover:bg-themeBrand group-hover:text-white transition-colors">↗</span>
-                            </div>
-
-                            <div class="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-6 text-white">
-                                <h3 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-1 text-white">
-                                    PADVS
-                                </h3>
-                                <p class="text-xs sm:text-sm font-mono uppercase tracking-wider text-neutral-300">
-                                    Participation &amp; Digital Value System
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                            <div>
-                                <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-3 hairline-b">
-                                    <span class="text-themeText font-mono">PADVS Platform</span>
-                                    <span class="text-themeBrand">Auditable Participation &amp; Analytics</span>
-                                </div>
-                                <p class="text-sm text-themeMuted leading-relaxed pt-3">
-                                    An IGSL-developed technology platform for structured, measurable and auditable digital participation. Integrates participant engagement, transactions, programme administration, outcome management, financial reconciliation and analytics.
-                                </p>
-                            </div>
-
-                            <div class="pt-6 mt-4 hairline-t flex items-center justify-between">
-                                <span class="text-[11px] font-mono uppercase tracking-wider text-themeMuted">ENTERPRISE OS · CONFIGURABLE</span>
-                                <a href="padvs.html" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-themeText hover:text-themeBrand transition-colors">
-                                    <span>Explore PADVS</span>
-                                    <span class="group-hover:translate-x-1 transition-transform">→</span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             EXPERIENCE (EXPERIENCE BUILT OVER TIME)
-        ========================================== -->
-        <section id="experience" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>EXPERIENCE</span>
-            </div>
-
-            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pb-12 sm:pb-16 items-baseline">
-                <div class="lg:col-span-6">
-                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
-                        Experience built<br>over time.
-                    </h2>
-                </div>
-                <div class="lg:col-span-6">
-                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed max-w-xl">
-                        IGSL's experience spans public-sector technology, GIS, addressing, spatial information systems and institutional transformation across Nigeria.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Locations showcase (No 01, 02 numbering) -->
-            <div class="reveal grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 pt-6 hairline-t">
-                
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">FEDERAL CAPITAL</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Abuja</strong>
-                    <span class="text-[11px] text-themeMuted">Headquarters</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">COMMERCIAL HUB</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Lagos</strong>
-                    <span class="text-[11px] text-themeMuted">Enterprise Ops</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">NORTH-WEST</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Kaduna</strong>
-                    <span class="text-[11px] text-themeMuted">Regional PMO</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">SOUTH-EAST</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Enugu</strong>
-                    <span class="text-[11px] text-themeMuted">Field Operations</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">NORTHERN HUB</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Kano</strong>
-                    <span class="text-[11px] text-themeMuted">Deployment</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">NORTH-EAST</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">Borno</strong>
-                    <span class="text-[11px] text-themeMuted">Advisory Systems</span>
-                </div>
-
-                <div class="p-4 bg-themeSurface rounded border border-themeBorder/80 hover:border-themeBrand transition-colors">
-                    <span class="text-[10px] text-themeMuted uppercase font-mono">SOUTHERN HUB</span>
-                    <strong class="block text-base font-bold text-themeText mt-1">South Region</strong>
-                    <span class="text-[11px] text-themeMuted">SAIP Infrastructure</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             VENTURES (NIGERIAN ROOTS. AFRICAN AMBITION.)
-        ========================================== -->
-        <section id="ventures" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal pb-6 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>VENTURES &amp; INNOVATION</span>
-            </div>
-
-            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-baseline">
-                <div class="lg:col-span-6">
-                    <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-themeText leading-[1.08]">
-                        Nigerian roots.<br>African ambition.
-                    </h2>
-                </div>
-                <div class="lg:col-span-6 space-y-4">
-                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed">
-                        Headquartered in Nigeria, IGSL develops solutions for complex and rapidly evolving African markets. Our growing ecosystem combines local institutional knowledge with international technology, specialist expertise and strategic partnerships.
-                    </p>
-                    <div class="pt-4 flex flex-wrap gap-3">
-                        <span class="px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-semibold text-themeText">
-                            Nigeria
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-semibold text-themeText">
-                            Ghana
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-full border border-themeBorder bg-themeSurface text-xs font-semibold text-themeText">
-                            Regional Opportunities
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venture Ecosystem Cards Grid with Hover Zoom -->
-            <div class="reveal mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                
-                <!-- Venture 1: IGS Matrix Ghana -->
-                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
-                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
+                                src="images/what-we-do/geospatial.jpg" 
+                                alt="Geospatial and location intelligence" 
+                                loading="lazy" 
+                            > 
+ 
+                        </div> 
+ 
+ 
+                        <div class="capability-card-content"> 
+ 
+                            <div class="capability-number"> 
+                                02 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Geospatial &amp; Location Intelligence 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                GIS, digital addressing, spatial databases and 
+                                location-enabled services. 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+ 
+                    <!-- DATA & DIGITAL INFRASTRUCTURE --> 
+ 
+                    <article class="capability-card"> 
+ 
+                        <div class="capability-image"> 
+ 
+                            <img 
+                                src="images/what-we-do/data-analytics.jpg" 
+                                alt="Data and digital infrastructure" 
+                                loading="lazy" 
+                            > 
+ 
+                        </div> 
+ 
+ 
+                        <div class="capability-card-content"> 
+ 
+                            <div class="capability-number"> 
+                                03 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Data &amp; Digital Infrastructure 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Data architecture, analytics, dashboards and supporting 
+                                digital infrastructure. 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+ 
+                    <!-- PROGRAMME DELIVERY & ADVISORY --> 
+ 
+                    <article class="capability-card"> 
+ 
+                        <div class="capability-image"> 
+ 
+                            <img 
+                                src="images/what-we-do/infrastructure.jpg" 
+                                alt="Infrastructure and programme delivery" 
+                                loading="lazy" 
+                            > 
+ 
+                        </div> 
+ 
+ 
+                        <div class="capability-card-content"> 
+ 
+                            <div class="capability-number"> 
+                                04 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Programme Delivery &amp; Advisory 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Programme architecture, PMO, procurement support, 
+                                implementation and technical assurance. 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+ 
+                    <!-- STRATEGIC VENTURES & INNOVATION --> 
+ 
+                    <article class="capability-card"> 
+ 
+                        <div class="capability-image"> 
+ 
+                            <img 
+                                src="images/what-we-do/consulting.jpg" 
+                                alt="Strategic ventures and innovation" 
+                                loading="lazy" 
+                            > 
+ 
+                        </div> 
+ 
+ 
+                        <div class="capability-card-content"> 
+ 
+                            <div class="capability-number"> 
+                                05 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Strategic Ventures &amp; Innovation 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Technology-enabled opportunities originated or developed 
+                                using IGSL's capabilities and intellectual property. 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="capabilities-cta"> 
+ 
+                    <a 
+                        href="what-we-do.html" 
+                        class="arrow-link" 
+                    > 
+ 
+                        Explore Our Capabilities → 
+ 
+                    </a> 
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             FLAGSHIP PROGRAMMES 
+        ========================================== --> 
+ 
+        <section class="section flagship"> 
+ 
+            <div class="container"> 
+ 
+ 
+                <div class="section-heading-row"> 
+ 
+                    <div> 
+ 
+                        <p class="eyebrow"> 
+                            FLAGSHIP PROGRAMMES 
+                        </p> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="flagship-grid"> 
+ 
+ 
+                    <!-- SAIP --> 
+ 
+                    <article class="flagship-card saip-card"> 
+ 
+                        <div class="flagship-image"> 
+ 
+                            <img 
+                                src="images/saip-location.jpg" 
+                                alt="State Addressing and Identity Programme" 
+                                loading="lazy" 
+                            > 
+ 
+ 
+                            <div class="image-label"> 
+                                PUBLIC DIGITAL INFRASTRUCTURE 
+                            </div> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="flagship-content"> 
+ 
+                            <div class="flagship-code"> 
+                                SAIP 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                State Addressing &amp; Identity Programme 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                A comprehensive framework integrating physical addressing, 
+                                geospatial information, digital systems and institutional 
+                                processes to create the location-intelligence infrastructure 
+                                required by modern government. 
+ 
+                            </p> 
+ 
+ 
+                            <p> 
+ 
+                                <strong> 
+ 
+                                    Currently being implemented for a state in Southern Nigeria, 
+ 
+                                </strong> 
+ 
+                                SAIP demonstrates how addressing can evolve from street 
+                                identification into persistent digital public infrastructure. 
+ 
+                            </p> 
+ 
+ 
+                            <a 
+                                href="saip.html" 
+                                class="text-link" 
+                            > 
+ 
+                                Explore SAIP → 
+ 
+                            </a> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+ 
+                    <!-- PADVS --> 
+ 
+                    <article class="flagship-card padvs-card"> 
+ 
+                        <div class="flagship-image"> 
+ 
+                            <img 
+                                src="images/padvs-platform.jpg" 
+                                alt="Participation and Digital Value System" 
+                                loading="lazy" 
+                            > 
+ 
+ 
+                            <div class="image-label"> 
+                                PROPRIETARY TECHNOLOGY 
+                            </div> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="flagship-content"> 
+ 
+                            <div class="flagship-code"> 
+                                PADVS 
+                            </div> 
+ 
+ 
+                            <h3> 
+                                Participation and Digital Value System 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                An IGSL-developed technology platform for structured, 
+                                measurable and auditable digital participation. 
+ 
+                            </p> 
+ 
+ 
+                            <p> 
+ 
+                                PADVS integrates participant engagement, transactions, 
+                                programme administration, outcome management, financial 
+                                reconciliation and analytics within a configurable 
+                                operating environment. 
+ 
+                            </p> 
+ 
+ 
+                            <a 
+                                href="padvs.html" 
+                                class="text-link" 
+                            > 
+ 
+                                Discover PADVS → 
+ 
+                            </a> 
+ 
+                        </div> 
+ 
+                    </article> 
+ 
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             EXPERIENCE 
+        ========================================== --> 
+ 
+        <section class="section experience"> 
+ 
+            <div class="container"> 
+ 
+ 
+                <div class="section-heading-row"> 
+ 
+                    <div> 
+ 
+                        <p class="eyebrow"> 
+                            EXPERIENCE 
+                        </p> 
+ 
+                        <h2> 
+                            Experience Built Over Time: 
+                        </h2> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="experience-grid"> 
+ 
+ 
+                    <div class="experience-content"> 
+ 
+ 
+                        <p class="experience-lead"> 
+ 
+                            IGSL's experience spans public-sector technology, GIS, 
+                            addressing, spatial information systems and institutional 
+                            transformation across Nigeria. 
+ 
+                        </p> 
+ 
+ 
+ 
+                        <div class="experience-locations"> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    01 
+                                </span> 
+ 
+                                <strong> 
+                                    Abuja 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    02 
+                                </span> 
+ 
+                                <strong> 
+                                    Kaduna 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    03 
+                                </span> 
+ 
+                                <strong> 
+                                    Lagos 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    04 
+                                </span> 
+ 
+                                <strong> 
+                                    Enugu 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    05 
+                                </span> 
+ 
+                                <strong> 
+                                    Kano 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    06 
+                                </span> 
+ 
+                                <strong> 
+                                    Borno 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                            <div class="location-item"> 
+ 
+                                <span> 
+                                    07 
+                                </span> 
+ 
+                                <strong> 
+                                    Southern Nigeria 
+                                </strong> 
+ 
+                            </div> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <a 
+                            href="experience.html" 
+                            class="arrow-link" 
+                        > 
+ 
+                            Explore Our Work → 
+ 
+                        </a> 
+ 
+ 
+                    </div> 
+ 
+ 
+ 
+                    <div class="experience-image"> 
+ 
                         <img 
-                            src="./assets/igs-matrix-ghana.jpg" 
-                            alt="West African regional market operations" 
-                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                            loading="lazy"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
-                                ACCRA · GHANA
-                            </span>
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-white">
-                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
-                                IGS Matrix Ghana
-                            </h3>
-                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
-                                Nya Mfasoɔ Digital Participation
-                            </p>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-xs text-themeMuted leading-relaxed">
-                            Regional operating entity deploying consumer-facing digital participation models and settlement integrations powered by PADVS.
-                        </p>
-                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
-                            <span>Explore Venture</span>
-                            <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Venture 2: Moyours Sports Academy -->
-                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
-                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
+                            src="images/experience-africa.jpg" 
+                            alt="Experience across Nigeria" 
+                            loading="lazy" 
+                        > 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             NIGERIAN ROOTS. AFRICAN AMBITION. 
+        ========================================== --> 
+ 
+        <section class="section african-ambition"> 
+ 
+ 
+            <div class="african-background"> 
+ 
+                <img 
+                    src="images/african-cities.jpg" 
+                    alt="" 
+                    aria-hidden="true" 
+                    loading="lazy" 
+                > 
+ 
+                <div 
+                    class="african-overlay" 
+                    aria-hidden="true" 
+                ></div> 
+ 
+            </div> 
+ 
+ 
+ 
+            <div class="container african-content"> 
+ 
+ 
+                <div class="african-copy"> 
+ 
+ 
+                    <p class="eyebrow light-eyebrow"> 
+ 
+                        NIGERIAN ROOTS. AFRICAN AMBITION. 
+ 
+                    </p> 
+ 
+ 
+                    <h2> 
+ 
+                        Nigerian Roots. African Ambition. 
+ 
+                    </h2> 
+ 
+ 
+                    <p> 
+ 
+                        Headquartered in Nigeria, IGSL develops solutions for complex 
+                        and rapidly evolving African markets. 
+ 
+                    </p> 
+ 
+ 
+                    <p> 
+ 
+                        Our growing ecosystem combines local institutional knowledge 
+                        with international technology, specialist expertise and 
+                        strategic partnerships. 
+ 
+                    </p> 
+ 
+ 
+ 
+                    <div class="africa-regions"> 
+ 
+ 
+                        <span> 
+                            Nigeria 
+                        </span> 
+ 
+ 
+                        <span> 
+                            Ghana 
+                        </span> 
+ 
+ 
+                        <span> 
+                            Regional Opportunities 
+                        </span> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+            </div> 
+ 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- ========================================= 
+             HOMEPAGE CTA 
+        ========================================== --> 
+ 
+        <section class="section final-cta"> 
+ 
+            <div class="container"> 
+ 
+ 
+                <div class="cta-box"> 
+ 
+ 
+                    <div class="cta-content"> 
+ 
+ 
+                        <p class="eyebrow"> 
+ 
+                            HAVE A COMPLEX PROBLEM? 
+ 
+                        </p> 
+ 
+ 
+                        <h2> 
+ 
+                            Let's build a system that works. 
+ 
+                        </h2> 
+ 
+ 
+ 
+                        <div class="cta-actions"> 
+ 
+ 
+                            <a 
+                                href="contact.html" 
+                                class="btn btn-primary" 
+                            > 
+ 
+                                Discuss a Project 
+ 
+                                <span aria-hidden="true"> 
+                                    → 
+                                </span> 
+ 
+                            </a> 
+ 
+ 
+                            <a 
+                                href="contact.html" 
+                                class="btn btn-outline" 
+                            > 
+ 
+                                Explore a Partnership 
+ 
+                                <span aria-hidden="true"> 
+                                    → 
+                                </span> 
+ 
+ 
+                            </a> 
+ 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+    </main> 
+ 
+ 
+ 
+    <!-- ========================================= 
+         FOOTER 
+    ========================================== --> 
+ 
+    <footer class="site-footer"> 
+ 
+ 
+        <div class="container"> 
+ 
+ 
+            <div class="footer-main"> 
+ 
+ 
+                <div class="footer-brand"> 
+ 
+ 
+                    <a 
+                        href="index.html" 
+                        class="logo footer-logo" 
+                        aria-label="Inspired Global Systems Limited Home" 
+                    > 
+ 
                         <img 
-                            src="./assets/moyours-academy-logo.png" 
-                            alt="Sports academy youth training and development" 
-                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                            loading="lazy"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
-                                YOUTH TALENT
-                            </span>
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-white">
-                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
-                                Moyours Sports Academy
-                            </h3>
-                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
-                                Football &amp; Athlete Development
-                            </p>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-xs text-themeMuted leading-relaxed">
-                            Youth football development academy providing structured coaching, academic mentorship, and international pathways for athletic talent.
-                        </p>
-                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
-                            <span>Explore Venture</span>
-                            <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Venture 3: Agricultural Services -->
-                <a href="ventures.html" class="group block bg-white rounded-lg overflow-hidden border border-themeBorder transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-themeBrand/50">
-                    <div class="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80" 
-                            alt="Agri-commodity harvesting and value chain processing" 
-                            class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108 filter group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                            loading="lazy"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-white border border-white/20">
-                                COMMODITIES &amp; INPUTS
-                            </span>
-                        </div>
-                        <div class="absolute bottom-3 left-3 right-3 text-white">
-                            <h3 class="font-display text-xl font-bold tracking-tight text-white group-hover:text-orange-300 transition-colors">
-                                Agricultural Services
-                            </h3>
-                            <p class="text-[11px] font-mono uppercase tracking-wider text-neutral-300">
-                                Potash Fertilizer &amp; Shea Butter
-                            </p>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-xs text-themeMuted leading-relaxed">
-                            Structured commodity operations spanning potash fertilizer importation and international export of raw organic shea butter.
-                        </p>
-                        <div class="mt-4 pt-3 hairline-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-themeText group-hover:text-themeBrand transition-colors">
-                            <span>Explore Venture</span>
-                            <span class="group-hover:translate-x-1 transition-transform">→</span>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             APPROACH & OPERATING PHILOSOPHY (Contrasting Band)
-        ========================================== -->
-        <section id="approach" class="bg-black text-white py-24 sm:py-32">
-            
-            <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-
-                <!-- Eyebrow row (No numbers) -->
-                <div class="reveal flex items-center justify-between pb-8 sm:pb-12 text-xs font-semibold tracking-widest uppercase text-neutral-400 border-b border-neutral-800">
-                    <span>APPROACH &amp; PHILOSOPHY</span>
-                    <span>OPERATING PHILOSOPHY</span>
-                </div>
-
-                <!-- Giant Display Manifesto Statement -->
-                <div class="reveal py-12 sm:py-20 max-w-5xl">
-                    <p class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight leading-[1.08] text-white">
-                        Understand the problem. Design the system. Build the capability. Deliver the outcome.
-                    </p>
-                </div>
-
-                <!-- 3 Pillars Row (No numbers) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pt-12 border-t border-neutral-800">
-
-                    <div class="reveal space-y-4">
-                        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-orange-400">
-                            SENIOR-LED ALWAYS
-                        </p>
-                        <p class="text-sm text-neutral-300 leading-relaxed">
-                            Partners work directly on your problem. Small, focused squads with deep institutional experience rather than layers of detached management.
-                        </p>
-                    </div>
-
-                    <div class="reveal space-y-4">
-                        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-orange-400">
-                            REAL-WORLD EXECUTION
-                        </p>
-                        <p class="text-sm text-neutral-300 leading-relaxed">
-                            We design systems that work within real institutions, physical environments, and regulatory constraints. Engagements are focused; outputs ship.
-                        </p>
-                    </div>
-
-                    <div class="reveal space-y-4">
-                        <p class="text-xs font-mono font-semibold uppercase tracking-widest text-orange-400">
-                            LASTING VALUE
-                        </p>
-                        <p class="text-sm text-neutral-300 leading-relaxed">
-                            From state-wide geospatial addressing to complex data platforms, we engineer sustainable operational capacity that clients own and run.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             CONTACT SECTION
-        ========================================== -->
-        <section id="contact" class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-24 hairline-b">
-            
-            <div class="reveal flex items-center justify-between pb-8 text-xs font-semibold tracking-widest uppercase text-themeMuted">
-                <span>INITIATE</span>
-                <span>AVAILABLE FOR NEW ENGAGEMENTS</span>
-            </div>
-
-            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-4 items-start">
-                
-                <!-- Headline & Intro Left -->
-                <div class="lg:col-span-7 space-y-6">
-                    <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-themeText leading-[1.04]">
-                        Let's talk about<br>what's next.
-                    </h2>
-                    <p class="text-base sm:text-lg text-themeMuted leading-relaxed max-w-lg">
-                        Have a complex operational problem or scoping a national programme? We bring technology, governance, and delivery together.
-                    </p>
-                </div>
-
-                <!-- Contact Details Right -->
-                <div class="lg:col-span-5 space-y-8">
-                    
-                    <div class="space-y-2">
-                        <span class="text-xs font-mono uppercase tracking-widest text-themeMuted">
-                            DIRECT ENQUIRIES
-                        </span>
-                        <a href="mailto:info@inspiredglobalsystems.com" class="block text-xl sm:text-2xl font-bold text-themeText hover:text-themeBrand transition-colors underline underline-offset-4 tracking-tight">
-                            info@inspiredglobalsystems.com
-                        </a>
-                    </div>
-
-                    <div class="space-y-2">
-                        <span class="text-xs font-mono uppercase tracking-widest text-themeMuted">
-                            OFFICES &amp; PRESENCE
-                        </span>
-                        <address class="not-italic text-sm text-themeMuted leading-relaxed font-mono">
-                            Abuja · Lagos · Enugu · Kaduna · Kano
-                        </address>
-                    </div>
-
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <a href="mailto:info@inspiredglobalsystems.com?subject=Project%20Enquiry" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase hover:bg-themeBrand transition-colors">
-                            Discuss a Project →
-                        </a>
-                        <a href="#solutions" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-themeBorder text-themeText text-xs font-semibold tracking-wider uppercase hover:bg-themeSurface transition-colors">
-                            Explore Solutions
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================================
-         FOOTER (Giant Brand Typography)
-    ========================================== -->
-    <footer class="bg-black text-white pt-16 sm:pt-24 pb-12 overflow-hidden">
-        
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-
-            <!-- Footer Top Bar -->
-            <div class="flex items-center justify-between pb-12 sm:pb-16 text-xs font-semibold tracking-widest uppercase text-neutral-400 border-b border-neutral-800">
-                <span>IGSL — BUILDING SYSTEMS THAT MAKE THINGS WORK</span>
-                
-            </div>
-
-            <!-- Footer Directory Links -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 sm:py-16 text-xs border-b border-neutral-800">
-                
-                <div class="space-y-4">
-                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
-                        CAPABILITIES
-                    </p>
-                    <ul class="space-y-2 text-neutral-300">
-                        <li><a href="#what-we-do" class="hover:text-orange-400 transition-colors">Digital Platforms</a></li>
-                        <li><a href="#what-we-do" class="hover:text-orange-400 transition-colors">Geospatial Intelligence</a></li>
-                        <li><a href="#what-we-do" class="hover:text-orange-400 transition-colors">Data Infrastructure</a></li>
-                        <li><a href="#what-we-do" class="hover:text-orange-400 transition-colors">Programme Advisory</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-4">
-                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
-                        SOLUTIONS
-                    </p>
-                    <ul class="space-y-2 text-neutral-300">
-                        <li><a href="#saip" class="hover:text-orange-400 transition-colors">SAIP Addressing</a></li>
-                        <li><a href="#padvs" class="hover:text-orange-400 transition-colors">PADVS Platform</a></li>
-                        <li><a href="#solutions" class="hover:text-orange-400 transition-colors">Institutional Systems</a></li>
-                        <li><a href="#solutions" class="hover:text-orange-400 transition-colors">Location Data Engine</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-4">
-                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
-                        COMPANY
-                    </p>
-                    <ul class="space-y-2 text-neutral-300">
-                        <li><a href="about.html" class="hover:text-orange-400 transition-colors">About Us</a></li>
-                        <li><a href="experience.html" class="hover:text-orange-400 transition-colors">Experience &amp; Footprint</a></li>
-                        <li><a href="ventures.html" class="hover:text-orange-400 transition-colors">Ventures</a></li>
-                        <li><a href="contact.html" class="hover:text-orange-400 transition-colors">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-4">
-                    <p class="font-mono uppercase tracking-wider text-neutral-400 font-semibold text-xs">
-                        CONNECT
-                    </p>
-                    <ul class="space-y-2 text-neutral-300">
-                        <li><span class="text-neutral-400">Headquarters: Abuja, NG</span></li>
-                        <li><a href="mailto:info@inspiredglobalsystems.com" class="hover:text-orange-400 transition-colors">Direct Inquiries</a></li>
-                        <li><span class="text-neutral-400">Auditable Delivery</span></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Giant Brand Typography IGSL -->
-            <div class="pt-12 sm:pt-16 pb-4 select-none">
-                <p class="giant-brand-text font-black text-white tracking-tighter text-center sm:text-left leading-none opacity-95 font-display">
-                    IGSL
-                </p>
-            </div>
-
-            <!-- Bottom Sub-Footer Bar -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
-                <p>
-                    &copy; <span id="current-year">2026</span> Inspired Global Systems Limited. All rights reserved.
-                </p>
-                
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================================
-         SCRIPTS: MOTIONS, DROPDOWN, SCROLL SPY
-    ========================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set dynamic current year
-            const yearElem = document.getElementById('current-year');
-            if (yearElem) {
-                yearElem.textContent = new Date().getFullYear();
-            }
-
-            // Right-hand slide-in mobile drawer
-            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
-            const mobileNav = document.getElementById('mobile-nav');
-            const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
-
-            function openMobileNav() {
-                mobileNav.classList.remove('translate-x-full');
-                mobileNavBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-                mobileNav.setAttribute('aria-hidden', 'false');
-                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeMobileNav() {
-                mobileNav.classList.add('translate-x-full');
-                mobileNavBackdrop.classList.add('opacity-0', 'pointer-events-none');
-                mobileNav.setAttribute('aria-hidden', 'true');
-                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-
-            if (mobileMenuBtn && mobileNav && mobileNavBackdrop) {
-                mobileMenuBtn.addEventListener('click', openMobileNav);
-                if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMobileNav);
-                mobileNavBackdrop.addEventListener('click', closeMobileNav);
-                document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                    link.addEventListener('click', closeMobileNav);
-                });
-            }
-
-            // Scroll reveal animations
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const revealElements = document.querySelectorAll('.reveal');
-
-            if (!prefersReducedMotion) {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px 0px -40px 0px',
-                    threshold: 0.08
-                };
-
-                const revealObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach((entry, index) => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => {
-                                entry.target.classList.add('active');
-                            }, index * 30);
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                revealElements.forEach(el => revealObserver.observe(el));
-            } else {
-                revealElements.forEach(el => el.classList.add('active'));
-            }
-
-            // Active section scroll spy for navbar links
-            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-            const sections = document.querySelectorAll('section[id]');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const scrollPos = window.scrollY + 120;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }, { passive: true });
-        });
-    </script>
-
-</body>
+                            src="images/igsl-footer-logo.png" 
+                            alt="Inspired Global Systems Limited" 
+                            class="footer-site-logo" 
+                        > 
+ 
+                    </a> 
+ 
+ 
+                    <p> 
+ 
+                        Building Systems That Make Things Work. 
+ 
+                    </p> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <div class="footer-links"> 
+ 
+ 
+                    <div class="footer-column"> 
+ 
+ 
+                        <h4> 
+                            Explore 
+                        </h4> 
+ 
+ 
+                        <a href="about.html"> 
+                            About 
+                        </a> 
+ 
+ 
+                        <a href="what-we-do.html"> 
+                            What We Do 
+                        </a> 
+ 
+ 
+                        <a href="solutions.html"> 
+                            Solutions &amp; Platforms 
+                        </a> 
+ 
+ 
+                        <a href="experience.html"> 
+                            Experience 
+                        </a> 
+ 
+ 
+                    </div> 
+ 
+ 
+ 
+                    <div class="footer-column"> 
+ 
+ 
+                        <h4> 
+                            Company 
+                        </h4> 
+ 
+ 
+                        <a href="ventures.html"> 
+                            Ventures 
+                        </a> 
+ 
+ 
+                        <a href="insights.html"> 
+                            Insights 
+                        </a> 
+ 
+ 
+                        <a href="careers.html"> 
+                            Careers 
+                        </a> 
+ 
+ 
+                        <a href="contact.html"> 
+                            Contact 
+                        </a> 
+ 
+ 
+                    </div> 
+ 
+ 
+ 
+                    <div class="footer-column"> 
+ 
+ 
+                        <h4> 
+                            Solutions 
+                        </h4> 
+ 
+ 
+                        <a href="saip.html"> 
+                            SAIP 
+                        </a> 
+ 
+ 
+                        <a href="padvs.html"> 
+                            PADVS 
+                        </a> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+            </div> 
+ 
+ 
+ 
+            <div class="footer-bottom"> 
+ 
+ 
+                <p> 
+ 
+                    &copy; 2026 Inspired Global Systems Limited. 
+                    All rights reserved. 
+ 
+                </p> 
+ 
+ 
+                <div class="footer-meta"> 
+ 
+ 
+                    <span> 
+                        Technology 
+                    </span> 
+ 
+ 
+                    <span> 
+                        Infrastructure 
+                    </span> 
+ 
+ 
+                    <span> 
+                        Data 
+                    </span> 
+ 
+ 
+                    <span> 
+                        Programme Delivery 
+                    </span> 
+ 
+                </div> 
+ 
+ 
+            </div> 
+ 
+ 
+        </div> 
+ 
+ 
+    </footer> 
+ 
+ 
+    <script src="script.js"></script> 
+ 
+ 
+</body> 
+ 
 </html>
