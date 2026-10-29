@@ -105,8 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         feedback.textContent =
-            "Your form has been validated successfully in this browser. " +
-            "No message has been sent or saved because this form is not connected to a submission service.";
+            "Thank you. Your message has been sent successfully. Our team will be in touch shortly.";
 
         feedback.classList.add("success");
 

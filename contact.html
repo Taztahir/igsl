@@ -323,11 +323,68 @@
 
                 <div class="contact-information">
 
+                    <form id="igsl-contact-form" class="contact-form" novalidate>
 
+                        <div class="form-field">
+                            <label for="contact-name">Full Name *</label>
+                            <input
+                                type="text"
+                                id="contact-name"
+                                name="name"
+                                required
+                                placeholder="Your full name"
+                                autocomplete="name"
+                            >
+                            <span id="name-error" class="field-error" role="alert"></span>
+                        </div>
 
-                    <p>[Telephone] | <a href="mailto:info@inspiredgloballtd.com">info@inspiredgloballtd.com</a> | [LinkedIn]</p>
+                        <div class="form-field">
+                            <label for="contact-email">Email Address *</label>
+                            <input
+                                type="email"
+                                id="contact-email"
+                                name="email"
+                                required
+                                placeholder="name@institution.com"
+                                autocomplete="email"
+                            >
+                            <span id="email-error" class="field-error" role="alert"></span>
+                        </div>
 
+                        <div class="form-field">
+                            <label for="contact-enquiry">Enquiry Type *</label>
+                            <select id="contact-enquiry" name="enquiry" required>
+                                <option value="">Select an enquiry type…</option>
+                                <option value="programme">Programme / Project Enquiry</option>
+                                <option value="saip">SAIP — Spatial Addressing</option>
+                                <option value="padvs">PADVS — Digital Value System</option>
+                                <option value="partnership">Strategic Partnership</option>
+                                <option value="consulting">Consulting &amp; Advisory</option>
+                                <option value="other">General Enquiry</option>
+                            </select>
+                            <span id="enquiry-error" class="field-error" role="alert"></span>
+                        </div>
 
+                        <div class="form-field">
+                            <label for="contact-message">Message *</label>
+                            <textarea
+                                id="contact-message"
+                                name="message"
+                                required
+                                rows="5"
+                                placeholder="Tell us about the problem you are trying to solve…"
+                            ></textarea>
+                            <span id="message-error" class="field-error" role="alert"></span>
+                        </div>
+
+                        <button type="submit" class="contact-form-button">
+                            <span>Send Message</span>
+                            <span>→</span>
+                        </button>
+
+                        <p id="contact-form-feedback" class="contact-form-feedback" tabindex="-1" role="status" aria-live="polite"></p>
+
+                    </form>
 
                 </div>
 
